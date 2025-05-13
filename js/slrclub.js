@@ -1,7 +1,7 @@
 
 const slrclubUI = {
 	init: function() {
-		console.log("inslrclubUI.init()");
+		// console.log("inslrclubUI.init()");
 		this.theme.init();
 		this.blocking.init();
 	},
@@ -88,11 +88,11 @@ const slrclubUI = {
 		},
 		set: function() {
 			chrome.storage.sync.get(['blockingData','blockingEnabled'], (result) => {
-				console.log('저장된 데이터:', result.blockingData);
+				// console.log('저장된 데이터:', result.blockingData);
 				const blockingData = result.blockingData || [];
-				console.log(result.blockingEnabled);
+				// console.log(result.blockingEnabled);
 				const blockingEnabled = result.blockingEnabled === undefined ? true : result.blockingEnabled;
-				console.log(blockingEnabled);
+				// console.log(blockingEnabled);
 				if (blockingEnabled === true && blockingData.length > 0) {
 					blockingData.forEach(data => {
 						const { key, cutoff, name, memo } = data;
@@ -129,7 +129,7 @@ const slrclubUI = {
 				chrome.storage.sync.set({
 					theme: themeStat
 				}, () => {
-					console.log('테마가 설정되었습니다:', themeStat);
+					// console.log('테마가 설정되었습니다:', themeStat);
 				});
 			}
 			setTheme();
