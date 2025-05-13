@@ -1,0 +1,88 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+body{
+    @apply bg-white text-gray-600 text-base;
+}
+.dark body{
+    @apply bg-black/80 text-gray-300;
+}
+
+::-webkit-scrollbar{  width:12px;  height:12px;}
+::-webkit-scrollbar-track{background-color: transparent;}
+::-webkit-scrollbar-corner{background-color: transparent;}
+::-webkit-scrollbar-button{display: none;}
+::-webkit-scrollbar-thumb{width: 10px; border-radius:7px; background-color: #00000044;border: solid 3px transparent; background-clip: content-box;}
+::-webkit-scrollbar-thumb:hover{background-color:#aaaaaa;}
+.dark ::-webkit-scrollbar-thumb:hover{background-color:#00000044;}
+button{ @apply border-none outline-none cursor-pointer; }
+input[type="text"]{ @apply outline-gray-500; }
+
+.btn{
+    @apply flex-shrink-0 rounded-md text-sm gap-x-1.5 px-2.5 py-1.5 inline-flex items-center justify-center shadow-xs ring-1 ring-inset 
+        bg-white
+        text-gray-800
+        ring-gray-400
+        hover:ring-gray-600
+        disabled:bg-gray-800 
+        aria-disabled:bg-gray-800 
+        focus-visible:ring-2
+        cursor-pointer;
+}
+.btn.btn-primary{ @apply bg-blue-500 text-white ring-blue-500 hover:ring-blue-600; }
+.btn.btn-secondary{ @apply bg-gray-200 text-gray-800 ring-gray-200 hover:ring-gray-300; }
+.btn.btn-success{ @apply bg-green-500 text-white ring-green-500 hover:ring-green-600; }
+.btn.btn-danger{ @apply bg-red-500 text-white ring-red-500 hover:ring-red-600; }
+.btn.btn-warning{ @apply bg-yellow-500 text-white ring-yellow-500 hover:ring-yellow-600; }
+.btn.btn-info{ @apply bg-gray-400/80 text-white ring-gray-400 hover:ring-gray-400; }
+.btn.btn-xs{ @apply text-xs px-1 py-0.5 rounded font-normal }
+.btn.btn-sm{ @apply text-xs px-1.5 py-1.25 rounded font-normal }
+.btn.btn-md{ @apply text-base px-2.5 py-1.5 }
+.btn.btn-lg{ @apply text-lg px-3.5 py-2 }
+.btn.btn-xl{ @apply text-xl px-5 py-3 }
+.btn:disabled{ @apply opacity-70 cursor-not-allowed; }
+
+.checkbox{ @apply inline-flex items-center h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500; }
+.checkbox:disabled{ @apply opacity-70 cursor-not-allowed; }
+.checkbox:checked { @apply bg-blue-500 border-transparent; }
+
+.input{ @apply inline-flex bg-white rounded-sm border border-gray-400 h-8 p-2 outline-0 text-sm; }
+.input:disabled{ @apply opacity-70 cursor-not-allowed; }
+.input:focus { @apply border-gray-600 shadow-sm ; }
+.input::placeholder { @apply text-gray-400  text-sm; }
+.input:hover { @apply border-gray-500; }
+
+.select{ 
+    @apply inline-flex bg-white rounded-sm border border-gray-400 h-8 px-2 pr-7 outline-0 text-sm appearance-none relative 
+    bg-[url('data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20fill=%22none%22%20viewBox=%220%200%2020%2020%22%3E%3Cpath%20stroke=%22%236b7280%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%20stroke-width=%221.5%22%20d=%22M6%208l4%204%204-4%22/%3E%3C/svg%3E')]
+    bg-no-repeat bg-position-[right_0.1rem_top_0.2rem] bg-[length:1.5rem_1.5rem] text-gray-900 cursor-pointer;
+}
+.select:disabled{ @apply opacity-70 cursor-not-allowed; }
+.select:focus { @apply border-gray-600 shadow-sm; }
+
+.tog-checkbox{
+    @apply relative inline-flex items-center h-7  rounded-full w-13 bg-gray-200 cursor-pointer border border-gray-300
+    dark:bg-gray-200/20 dark:border-gray-800 dark:checked:bg-gray-600/20 text-black/40 dark:text-gray-300
+    appearance-none
+    transition-colors duration-200 ease-in-out;
+    &:disabled{ @apply opacity-70 cursor-not-allowed; }
+    &::before{ @apply text-[0.7rem] content-['OFF'] absolute  right-1  ;}
+    &:checked::before{ @apply content-['ON'] left-1.5 text-white;}
+    &:checked { @apply bg-blue-500 border border-blue-500 ; }
+    &::after{
+        @apply content-[''] inline-block w-5 h-5 rounded-full bg-white shadow translate-x-0.5 ;
+    }
+    &:checked::after { @apply translate-x-7 bg-white; }
+    
+    &.cutoff{ @apply h-6  w-14  rounded-sm}
+    &.cutoff::after{ @apply rounded-sm h-4.5 w-4.5}
+    &.cutoff::before{ @apply content-['차단']}
+    &.cutoff:checked::after { @apply translate-x-8.5  }
+}
+
+.dark .tog-checkbox::after{ @apply bg-white/50;}
+
+.dark .tog-checkbox:checked::after{ @apply bg-white;}
+/* @layer base { 
+} */
+

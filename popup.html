@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SLRCLUB Popup</title>
+<link rel="stylesheet" href="./css/fontawesome.min.css">
+<link rel="stylesheet" href="./css/all.min.css">
+<link rel="stylesheet" href="./css/tailwind.css">
+</head>
+<body class="w-120 h-140 p-4 bg-white text-gray-900">
+    <div class="wrap h-full flex flex-col w-full">
+        <div class="flex justify-between flex-row w-full mb-4">
+            <h1 class=""><i class="fa-solid fa-user-tie"></i> <span class="font-bold dark:text-white">클럽유저 관리</span></h1>
+            <div class="">
+                <input type="checkbox" class="tog-checkbox" id="togBlocking" />
+            </div>
+        </div>
+        <div class="overflow-y-auto h-full relative">
+            <div class="hidden absolute top-0 left-0 w-full h-full bg-white dark:bg-black/0 opacity-40 z-10" id="blocklistScreen"></div>
+            <!-- 차단유저 리스트가 여기에 동적으로 추가됩니다. -->
+            <ul class="h-full flex flex-col gap-2" id="blockingUserList"></ul>
+
+        </div>
+        <div>
+            <div class="flex justify-between items-center mt-4 gap-2">
+                <div>
+                    <a class="text-lg" href="./options.html" target="_blank" title="기능설명 바로가기"><i class="fa-solid fa-circle-question"></i></a>
+                </div>
+                <div>
+                    <button class="btn btn-sm" id="btnBackup"><i class="fa-solid fa-floppy-disk"></i> 백업</button>
+                    <button class="btn btn-sm" id="btnRestore"><i class="fa-solid fa-retweet"></i> 복원</button>
+                    <input type="file" name="" id="fileInput" class="hidden" accept=".json" />
+                    <!-- <button class="btn btn-sm" id="btnClear"><i class="fa-solid fa-trash"></i> 리스트 초기화</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="common.js"></script>
+    <script src="popup.js"></script>
+</body>
+
+</html>

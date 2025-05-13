@@ -1,0 +1,40 @@
+{
+    "manifest_version": 3,
+    "name": "SLRCLUB+",
+    "description":"SLRCLUB 커뮤니티 확장기능",
+    "version": "0.0.1",
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.slrclub.com/*",
+                "http://www.slrclub.com/*"
+            ],
+            "js": ["js/slrclub.js"],
+            "css": ["css/slrclub.css"]
+        }
+    ],
+    "web_accessible_resources":[{
+        "resources":["img/*", "css/*"],
+        "matches": [
+            "https://www.slrclub.com/*",
+            "http://www.slrclub.com/*"
+        ]
+    }],
+    "host_permissions": [
+        "https://www.slrclub.com/*",
+        "http://www.slrclub.com/*"
+    ],
+    "icons": {
+        "256": "img/logo.png"
+    },
+    "action": {
+        "default_title": "SLRCLUB+",
+        "default_icon": "img/logo.png",
+        "default_popup": "popup.html"
+    },
+    "permissions": ["storage"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "options_page": "options.html"
+}
