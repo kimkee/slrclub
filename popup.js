@@ -96,7 +96,7 @@ document.addEventListener('click', (event) => {
         const key = btDel.getAttribute("data-key");
         const name = btDel.getAttribute("data-name");
         console.log(key);
-        if (!confirm(`"${name}"님을 차단 목록에서 삭제하시겠습니까?`)) {
+        if (!confirm(`"${name}"님을 메모,차단 목록에서 삭제하시겠습니까?`)) {
             return; // 사용자가 취소를 클릭한 경우
         }
         // 삭제할 데이터의 key 값을 사용하여 해당 데이터를 삭제
