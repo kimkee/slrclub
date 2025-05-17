@@ -114,11 +114,30 @@ const slrclubUI = {
                             const xuid = els.getAttribute('data-xuid');
                             // console.log( key , cutoff ,  xuid);
                             if ( key === xuid ) {
-                                els.insertAdjacentHTML('afterend', `<div class="block_user" style="color: red; font-size: 11px;">${memo}</div>`);
+                                els.insertAdjacentHTML('afterend', `<div class="block_user" style="color: red; font-size: 11px;">[${memo}]</div>`);
                             }
                             if ( (key === xuid) && cutoff  && !els.closest('#bbs_view_head') ) {
                                 els.closest('tr').style.opacity = '0.5';
                                 els.closest('tr').style.display = 'none';
+                            }
+                        });
+                        document.querySelectorAll('#rewview_list .cname').forEach(els => {
+                            const uname = els.innerText;
+                            // console.log( key , cutoff , name,  uname);
+                            
+                            if ( (name === uname)  ) {
+                                // els.closest('li').style.opacity = '0.1';
+                                els.insertAdjacentHTML('afterend', `<span class="block_user" style="color: red; font-size: 11px;">[${memo}]</span>`);
+                                // els.closest('li').style.display = 'none';
+                                
+                                if( cutoff){
+                                    els.closest('li').querySelector('.cmtbt_ct').insertAdjacentHTML('afterend', `<span class="block_user" 
+                                        style="color: red; font-size: 11px; position: absolute; left:0px; right:0px; top:0px; bottom:0px; background: #ffece9; padding: 25px;"
+                                        >차단 된 유저입니다.</span>`);
+                                    
+                                    els.closest('li').querySelector('.cmt-contents').style.display = 'none';
+                                    // els.closest('li').querySelector('.cmtbt_ct').style.display = 'none';
+                                }
                             }
                         });
                         

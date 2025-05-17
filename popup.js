@@ -138,7 +138,7 @@ document.getElementById('btnBackup').addEventListener('click', () => {
             + String(now.getHours()).padStart(2, '0')
             + String(now.getMinutes()).padStart(2, '0')
             + String(now.getSeconds()).padStart(2, '0');
-        const filename = `slrclub+backup_${timestamp}.json`; // 파일 이름 생성
+        const filename = `backup_slrclub_${timestamp}.json`; // 파일 이름 생성
 
 
         const a = document.createElement('a');
