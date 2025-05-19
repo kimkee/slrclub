@@ -78,11 +78,20 @@ const slrclubUI = {
                     alert('메모를 입력하세요');
                     return; // 사용자가 취소를 클릭한 경우
                 }
+                
+                let isCutoff = false;
+                if( confirm('차단 하시겠습니까?')) {
+                    isCutoff = true;
+                    console.log('차단합니다.');
+                }else {
+                    isCutoff = false;
+                }
+
                 const newBlockingData = {
                     key: uid,
                     name: name,
                     memo: memo,
-                    cutoff: false,
+                    cutoff: isCutoff,
                     timestamp: new Date().toISOString(),
                 };
 
