@@ -29,7 +29,7 @@ const setDataList = (data) => {
             ${data.map(item => `
             <li class="flex items-start justify-start relative p-2 border border-gray-300 dark:border-gray-600 text-xs pr-10">
                 <span class="w-18 flex-none font-medium break-all border-r border-gray-300 dark:border-gray-600 px-1 mr-2">
-                    <input type="checkbox" data-key="${item.key}" ${item.cutoff ? 'checked' : ''} class="tog-checkbox cutoff" title="해당 회원의 글이 목록에서 보이지 않게 합니다." />
+                    <input type="checkbox" data-key="${item.key}" data-name="${item.name}" ${item.cutoff ? 'checked' : ''} class="tog-checkbox cutoff" title="해당 회원의 글이 목록에서 보이지 않게 합니다." />
                 </span>
                 <span class="w-28 flex-none font-medium break-all border-r border-gray-300 dark:border-gray-600 p-1 mr-2">${item.name}</span>
                 <span class="memo w-full text-xs">
@@ -59,11 +59,12 @@ const cutOffUpdate = (event) => {
     if(!checkbox) return;
     
     const key = checkbox.getAttribute('data-key');
+    const name = checkbox.getAttribute('data-name');
     const newChecked = checkbox.checked;
     console.log(key, newChecked);
 
     // Update the cutoff in blockingData
-    const itemToUpdate = blockingData.find(item => item.key === key);
+    const itemToUpdate = blockingData.find(item => item.name === name);
     if (itemToUpdate) {
         itemToUpdate.cutoff = newChecked;
     }
@@ -79,7 +80,7 @@ const memoUpdate = (event) => {
     console.log(key, newMemo);
 
     // Update the memo in blockingData
-    const itemToUpdate = blockingData.find(item => item.key === key);
+    const itemToUpdate = blockingData.find(item => item.name === name);
     if (itemToUpdate) {
         itemToUpdate.memo = newMemo;
     }
