@@ -7,3 +7,5 @@
 #rewview_list .cname+.block_user{color: #2b7fff; font-size: 11px; line-height: 1;}
 #bbs_view_head .nick .block_user{display: inline-block; margin-left: 4px;}
 #rewview_list .block_user.box{color: #2b7fff; font-size: 11px; position: absolute; left:0px; right:0px; top:0px; bottom:0px; background: #def3ff; padding: 25px;}
+
+#bbs_list tr td.list_name.isMemo{padding: 3px 0px; position: relative; line-height: 1.1;}

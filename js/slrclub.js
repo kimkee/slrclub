@@ -132,10 +132,12 @@ const slrclubUI = {
                             // console.log( key , cutoff ,  xuid);
                             if ( name === uname || key === xuid ) {
                                 els.insertAdjacentHTML('afterend', `<div class="block_user">[${memo}]</div>`);
+                                els.closest('.list_name')?.classList.add('isMemo');
                             }
                             if ( (name === uname || key === xuid ) && cutoff  && !els.closest('#bbs_view_head') ) {
                                 els.closest('tr').style.opacity = '0.5';
                                 els.closest('tr').style.display = 'none';
+                                
                             }
                         });
                         document.querySelectorAll('#rewview_list .cname').forEach(els => {
