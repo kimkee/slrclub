@@ -60,9 +60,11 @@ const slrclubUI = {
 
             console.log('addHTML 호출됨');
         },
-        addUser: function(uid, name) {
-            console.log(uid , name);
-            
+        addUser: function(uid , name) {
+            if(uid === 'null'){
+                uid = name;
+            }
+            console.log("addUser " +uid , name);
             chrome.storage.sync.get('blockingData', (result) => {
                 if (chrome.runtime.lastError) {
                     console.warn("storage 접근 실패:", chrome.runtime.lastError.message);
@@ -71,7 +73,8 @@ const slrclubUI = {
                 blockingData = result.blockingData || blockingData;
                 console.log('저장된 데이터:', result.blockingData);
                 const oldKey = blockingData?.map(item => {
-                    if (item.name === name) {
+                    console.log(item.name, uid);
+                    if (item.name === name || item.key === uid) {
                         return item.memo;
                     }
                 }).join('');
@@ -98,9 +101,8 @@ const slrclubUI = {
                     cutoff: isCutOff,
                     timestamp: new Date().toISOString(),
                 };
-
-                // 기존 데이터에서 같은 key 값을 가진 요소를 제거
-                blockingData = blockingData.filter(item => item.name !== newBlockingData.name);
+                // 기존 데이터에서 같은 key 또는 name 값을 가진 요소를 제거
+                blockingData = blockingData.filter(item => item.name !== newBlockingData.name && item.key !== newBlockingData.key);
 
                 // 새로운 데이터를 배열의 맨 앞에 추가
                 blockingData.unshift(newBlockingData);
@@ -115,13 +117,21 @@ const slrclubUI = {
         set: function() {
             chrome.storage.sync.get(['blockingData','blockingEnabled'], (result) => {
                 // console.log('저장된 데이터:', result.blockingData);
-                const blockingData = result.blockingData || [];
-                // console.log(result.blockingEnabled);
-                const blockingEnabled = result.blockingEnabled === undefined ? true : result.blockingEnabled;
-                // console.log(blockingEnabled);
-                document.querySelectorAll('.block_user').forEach(els => {
-                    els.remove();
-                });
+				const blockingData = result.blockingData ;
+				const blockingEnabled = result.blockingEnabled ;
+                if(blockingData === undefined) {
+					chrome.storage.sync.set({ blockingData: [] }, () => {
+						console.log('차단 데이터가 초기화되었습니다.');
+					});
+				}
+				if(blockingEnabled === undefined) {
+					chrome.storage.sync.set({ blockingEnabled: true }, () => {
+						console.log('차단 기능이 활성화되었습니다.');
+					});
+				}
+                
+                document.querySelectorAll('.block_user').forEach(els => els.remove());
+                
                 if (blockingEnabled === true && blockingData.length > 0) {
                     blockingData.forEach(data => {
                         const { key, cutoff, name, memo } = data;
