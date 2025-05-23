@@ -9,3 +9,29 @@
 #rewview_list .block_user.box{color: #2b7fff; font-size: 11px; position: absolute; left:0px; right:0px; top:0px; bottom:0px; background: #def3ff; padding: 25px;}
 
 #bbs_list tr td.list_name.isMemo{padding: 3px 0px; position: relative; line-height: 1.1;}
+#post_hd{ margin-bottom: 10px;border-bottom: #eeeeee solid 1px; padding: 0px 0px 6px 0px;}
+#post_hd .link{display: flex; justify-content: space-between; width: 100%; }
+#post_hd .name{}
+#post_hd .more{}
+
+#recent_post{border: #dddddd solid 1px; margin: 15px 0px 20px 0px; padding: 10px 10px 10px 10px;}
+#recent_post>table{width: 100%;table-layout: fixed;}
+#recent_post>table thead{}
+#recent_post>table thead.blist_head{display: none;}
+#recent_post>table thead th.tit_num{display: none;}
+#recent_post>table thead th.tit_name{display: none;}
+#recent_post>table thead th.tit_vote{display: none;}
+#recent_post>table thead th.tit_click{display: none;}
+#recent_post>table tbody{}
+#recent_post>table tbody td{padding: 2px;}
+#recent_post>table tbody td .li_ic{margin-right: 3px;}
+#recent_post>table tbody td.sbj{ white-space: nowrap; overflow: hidden; width: calc(80%); text-overflow: ellipsis;}
+#recent_post>table tbody td.list_date{text-align: right;}
+#recent_post>table tbody td.list_num{font-size:11px; white-space: nowrap;}
+#recent_post>table tbody td.list_name{display: none;}
+#recent_post>table tbody td.list_vote{display: none;}
+#recent_post>table tbody td.list_click{display: none;}
+#recent_post>table tbody tr:nth-child(5)~tr{display: none;}
+
+.isGal #recent_post{border-color: #555555;}
+.isGal #post_hd{border-color: #555555;}
