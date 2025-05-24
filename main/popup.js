@@ -80,11 +80,13 @@ const memoUpdate = (event) => {
     console.log(key, newMemo);
 
     // Update the memo in blockingData
-    const itemToUpdate = blockingData.find(item => item.name === name);
+    const itemToUpdate = blockingData.find(item => item.key === key);
     if (itemToUpdate) {
-        itemToUpdate.memo = newMemo;
+        itemToUpdate.memo = newMemo.trim();
+        if (itemToUpdate.memo === '') {
+            itemToUpdate.memo = '메모가 없습니다.'; // 빈 메모를 기본값으로 설정
+        }
     }
-
     // Save updated data to chrome.storage.sync
     chrome.storage.sync.set({ blockingData }, () => {
         console.log('차단 데이터가 업데이트되었습니다:', blockingData);
