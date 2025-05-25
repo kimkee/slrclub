@@ -153,16 +153,20 @@ const slrclubUI = {
                         });
                         document.querySelectorAll('#rewview_list .cname').forEach(els => {
                             const uname = els.innerText;
+                            // if(els.classList.contains('re_prtnm')){
+                            //     uname = els.innerText.replace(/^\[|\]$/g, "");
+                            // }
                             // console.log( key , cutoff , name,  uname);
                             
                             if ( (name === uname)  ) {
-                                // els.closest('li').style.opacity = '0.1';
+                                // els.closest('li').style.opacity = '0.5';
                                 els.insertAdjacentHTML('afterend', `<span class="block_user">[${memo}]</span>`);
                                 // els.closest('li').style.display = 'none';
                                 
                                 if( cutoff){
                                     els.closest('li').querySelector('.cmtbt_ct').insertAdjacentHTML('afterend', `<span class="block_user box">차단 된 유저입니다.</span>`);
                                     els.closest('li').querySelector('.cmt-contents').style.display = 'none';
+                                    els.closest('li').classList.add("isHide");
                                     // els.closest('li').querySelector('.cmtbt_ct').style.display = 'none';
                                 }
                             }
@@ -178,7 +182,7 @@ const slrclubUI = {
         init: function() {
             this.set();
         },
-        set: function() {
+        set: async function() {
 
             // 갤러리게시판일 경우 
             if( document.querySelector('[href*="/css/bbs_gal.css"]') ) {
@@ -196,97 +200,16 @@ const slrclubUI = {
             //     // console.log(els);
             // });
 
-            const category = {
-                "free": "자유게시판",
-                "politics": "정치게시판 ",
-                "equip_board": "포토스트림",
-                "null": "소모임",
-                "marketinfo": "시장정보",
-                "pr": "직접홍보",
-                "sourcing": "해외직구",
-                "ad_free": "성인게시판",
-                "vcoin": "가상화폐게시판",
-                "pc": "PC게시판",
-                "insurance": "보험상담게시판",
-                "discuss": "이슈토론방",
-                "pds": "자료실",
-                "slr_qna": "SLR지식인",
-                "best_member": "SLR회원랭킹",
-                "canon_d30_forum": "Canon",
-                "contax_forum": "Contax",
-                "fuji_s1pro_forum": "FujiFilm",
-                "hasselblad_forum": "Hasselblad",
-                "kodak_forum": "Kodak",
-                "leica_forum": "Leica",
-                "nikon_d1_forum": "Nikon",
-                "olympus_e10_forum": "Olympus",
-                "panasonic_forum": "Panasonic",
-                "pentax_forum": "Pentax",
-                "samsung_forum": "Samsung",
-                "samyang_forum": "Samyang",
-                "sigma_forum": "Sigma",
-                "minolta_forum": "Sony/Minolta",
-                "movie_forum": "동영상",
-                "digitalback_forum": "Digital Back",
-                "sigma_lforum": "Lens Sigma",
-                "tamron_lforum": "Lens Tamron",
-                "tokina_lforum": "Lens Tokina",
-                "film_forum": "Film",
-                "rf_forum": "RF",
-                "photo_forum": "사진일반",
-                "digitaldarkroom": "디지털암실",
-                "digitaldarkroom_request": "보정요청",
-                "common_forum": "액세서리",
-                "slr_qna": "SLR지식인",
-                "samsung_forum": "자유게시판",
-                "samsung_fgallery": "사진게시판",
-                "newproduct_samsung": "신제품정보",
-                "samsung_tester": "체험단",
-                "today_pictures": "오늘의사진",
-                "work_gallery": "작품갤러리",
-                "theme_gallery": "주제갤러리",
-                "study_gallery": "습작갤러리",
-                "press_gallery": "시민기자단",
-                "slr_review": "SLR리뷰",
-                "user_review": "유저사용기",
-                "common_review": "자유사용기",
-                "user_essay": "포토에세이",
-                "user_lecture": "유저강좌",
-                "slr_lecture": "SLR강좌",
-                "offrec": "출사정보",
-                "best_review": "추천인기글",
-                "slr_qna": "SLR지식인",
-                "used_market": "구인구직",
-                "trade_in": "보상판매",
-                "marketinfo": "시장정보",
-                "pr": "직접홍보",
-                "sourcing": "해외직구",
-                "marketprotect": "장터보호",
-                "finding_equip": "도난/분실신고",
-                "nikon_d1_forum": "자유게시판",
-                "nikon_fgallery": "사진게시판",
-                "newproduct_nikon": "신제품정보",
-                "service_nikon": "소비자의견",
-                "nikon_review": "리뷰게시판",
-                "nikon_club": "친목게시판",
-                "nikon_tester": "리뷰어",
-                "event_nikon_gallery": "니콘 사진전",
-
-            };
-
-            // document.querySelectorAll('#section1 ul.menu>li a').forEach(menu =>{
-            //     const url = menu.href;
-            //     const id = new URL(url).searchParams.get("id");
-            //     const name = menu.innerText.replace(/└ /g, '');
-            //     category[id] = name;
-            //     console.log(name , id);
-            // })
-            console.log(category);
-
             
             const target = document.getElementById("recent_post");
 
-            fetch(`/bbs/zboard.php?sid1=${uid}&setsearch=id&keyword=${uid}`)
+            const jsonUrl = chrome.runtime.getURL("js/category.json");
+            const category = await fetch(jsonUrl)
+                .then(response => response.ok && response.json() )
+                .then(data => data)
+                .catch(err => console.error("JSON 파일 로드 실패:", err));
+                
+            await fetch(`/bbs/zboard.php?sid1=${uid}&setsearch=id&keyword=${uid}`)
             .then(response => response.text())
             .then(html => {
                 const parser = new DOMParser();
@@ -301,7 +224,7 @@ const slrclubUI = {
                         els.setAttribute('title', '새창 열림');
                         const url = els.href;
                         const id = new URL(url).searchParams.get("id");
-                        console.log(category[id]);
+                        // console.log(category[id]);
                         els.closest("tr").querySelector('.list_num').innerText = category[id];
                         els.closest("tr").querySelector('.list_num').setAttribute('data-id', id);
                     });

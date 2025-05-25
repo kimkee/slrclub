@@ -14,7 +14,7 @@
         }
     ],
     "web_accessible_resources":[{
-        "resources":["img/*", "css/*"],
+        "resources":["img/*", "css/*", "js/*", "/main/popup.html", "/main/options.html"],
         "matches": [
             "https://www.slrclub.com/*",
             "http://www.slrclub.com/*"

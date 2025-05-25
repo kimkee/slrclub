@@ -6,7 +6,9 @@
 #bbs_view_head .nick .block_user,
 #rewview_list .cname+.block_user{color: #f14a00; font-size: 11px; line-height: 1;}
 #bbs_view_head .nick .block_user{display: inline-block; margin-left: 4px;}
-#rewview_list .block_user.box{color: #f14a00; font-size: 11px; position: absolute; left:0px; right:0px; top:0px; bottom:0px; background: #def3ff; padding: 25px;}
+#rewview_list .block_user.box{color: #f14a00; font-size: 11px; position: absolute; left:0px; right:0px; top:0px; bottom:0px; z-index: 1; background: #def3ff; padding: 25px;}
+/* #rewview_list li.isHide+li.reply{display: none;}
+#rewview_list li.isHide+li.reply+li.reply{display: none;} */
 
 #bbs_list tr td.list_name.isMemo{padding: 3px 0px; position: relative; line-height: 1.1;}
 #post_hd{ margin-bottom: 10px;border-bottom: #eeeeee solid 1px; padding: 0px 0px 6px 0px;}
