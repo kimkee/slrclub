@@ -43,4 +43,8 @@
 
 #post_comment .rewrite_box { width: calc(100% - 220px);}
 #post_comment .rewrite_box textarea, 
-#cmtrep .rewrite_box textarea{resize: vertical; min-height: 73px; }
+#cmtrep .rewrite_box textarea{resize: vertical; min-height: 73px; height: 73px; max-height: 600px; outline: none; border-radius: 3px;}
+#post_comment .rewrite_box, 
+#cmtrep .rewrite_box{border-radius: 3px;}
+#post_comment .rewrite_box:focus-within, 
+#cmtrep .rewrite_box:focus-within{border-color: #999999;}

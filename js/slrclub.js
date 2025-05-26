@@ -5,6 +5,7 @@ const slrclubUI = {
         this.theme.init();
         this.blocking.init();
         this.recent.init();
+        this.autoHeight.init();
     },
     blocking: {
         init: function() {
@@ -240,6 +241,26 @@ const slrclubUI = {
                 }
             })
             .catch(err => console.error("요청 실패:", err));
+        }
+    },
+    autoHeight:{
+        init: function() {
+            this.evt();
+        },
+        evt: function() {
+            const _this = this;
+            document.addEventListener('input', (event) => {
+                const el = event.target.closest(".cmt");
+                if (el ) {
+                    _this.set(el);
+                }
+            });
+        },
+        set: function(el) { // textarea 높이 자동 조절
+            // console.log('el', el.tagName);
+            // if(el.scrollHeight <= 73) return; 
+            el.style.height = '73px'; // 초기화
+            el.style.height = el.scrollHeight - 0  + 'px'; // 높이 조정
         }
     },
     theme: {
