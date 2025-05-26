@@ -26,10 +26,13 @@
 #recent_post>table thead th.tit_click{display: none;}
 #recent_post>table tbody{}
 #recent_post>table tbody td{padding: 2px;}
-#recent_post>table tbody td .li_ic{margin-right: 3px;}
+#recent_post>table tbody td .reply_icon,
+#recent_post>table tbody td .li_ic{margin-right: 4px;}
 #recent_post>table tbody td.sbj{ white-space: nowrap; overflow: hidden; width: calc(80%); text-overflow: ellipsis;}
+#recent_post>table tbody td.sbj a:visited { color: #6E1B94; }
 #recent_post>table tbody td.list_date{text-align: right;}
 #recent_post>table tbody td.list_num{font-size:11px; white-space: nowrap;}
+#recent_post>table tbody td.list_num .cate{display: flex; justify-content: center; align-items: center; background: #dddddd99; border-radius: 3px;}
 #recent_post>table tbody td.list_name{display: none;}
 #recent_post>table tbody td.list_vote{display: none;}
 #recent_post>table tbody td.list_click{display: none;}
@@ -37,3 +40,7 @@
 
 .isGal #recent_post{border-color: #555555;}
 .isGal #post_hd{border-color: #555555;}
+
+#post_comment .rewrite_box { width: calc(100% - 220px);}
+#post_comment .rewrite_box textarea, 
+#cmtrep .rewrite_box textarea{resize: vertical; min-height: 73px; }

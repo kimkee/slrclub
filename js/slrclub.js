@@ -225,7 +225,7 @@ const slrclubUI = {
                         const url = els.href;
                         const id = new URL(url).searchParams.get("id");
                         // console.log(category[id]);
-                        els.closest("tr").querySelector('.list_num').innerText = category[id];
+                        els.closest("tr").querySelector('.list_num').innerHTML = `<span class="cate">${category[id]}</span>`;
                         els.closest("tr").querySelector('.list_num').setAttribute('data-id', id);
                     });
                     document.getElementById('post_hd')?.remove();
