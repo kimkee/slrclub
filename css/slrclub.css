@@ -29,7 +29,7 @@
 #recent_post>table tbody td .reply_icon,
 #recent_post>table tbody td .li_ic{margin-right: 4px;}
 #recent_post>table tbody td.sbj{ white-space: nowrap; overflow: hidden; width: calc(80%); text-overflow: ellipsis;}
-#recent_post>table tbody td.sbj a:visited { color: #6E1B94; }
+#recent_post>table tbody td.sbj a:visited { color: #955baf; }
 #recent_post>table tbody td.list_date{text-align: right;}
 #recent_post>table tbody td.list_num{font-size:11px; white-space: nowrap;}
 #recent_post>table tbody td.list_num .cate{display: flex; justify-content: center; align-items: center; background: #dddddd99; border-radius: 3px;}
@@ -40,10 +40,11 @@
 
 .isGal #recent_post{border-color: #555555;}
 .isGal #post_hd{border-color: #555555;}
+.isGal #recent_post table tbody td.list_num .cate {    background: rgb(221 221 221 / 18%);}
 
 #post_comment .rewrite_box { width: calc(100% - 220px);}
 #post_comment .rewrite_box textarea, 
-#cmtrep .rewrite_box textarea{resize: vertical; min-height: 73px; height: 73px; max-height: 600px; outline: none; border-radius: 3px;}
+#cmtrep .rewrite_box textarea{resize: vertical; min-height: 73px; height: 73px; max-height: 600px; outline: none; border-radius: 3px; line-height: 1.2;}
 #post_comment .rewrite_box, 
 #cmtrep .rewrite_box{border-radius: 3px;}
 #post_comment .rewrite_box:focus-within, 

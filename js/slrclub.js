@@ -186,7 +186,7 @@ const slrclubUI = {
         set: async function() {
 
             // 갤러리게시판일 경우 
-            if( document.querySelector('[href*="/css/bbs_gal.css"]') ) {
+            if( document.querySelector('[href*="/css/bbs_gal"]') ) {
                 document.body.classList.add('isGal');
             }
 
