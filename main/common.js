@@ -34,5 +34,4 @@ chrome.storage.sync.get(['theme'], (result) => {
 	} else {
 		document.documentElement.classList.remove('dark');
 	}
-	
 });

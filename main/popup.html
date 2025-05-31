@@ -9,24 +9,29 @@
 <link rel="stylesheet" href="/css/all.min.css">
 <link rel="stylesheet" href="/css/tailwind.css">
 </head>
-<body class="w-120 h-140 p-4 bg-white text-gray-900">
+<body class="w-120 h-140 bg-white text-neutral-900">
     <div class="wrap h-full flex flex-col w-full">
-        <div class="flex justify-between flex-row w-full mb-4">
-            <h1 class=""><i class="fa-solid fa-user-tie"></i> <span class="font-bold dark:text-white">SLR클럽 유저관리</span> </h1>
-            <div class="">
-                <input type="checkbox" class="tog-checkbox" id="togBlocking" />
+        <div class="flex justify-between flex-row w-full px-4 py-3 border-b border-neutral-200 dark:border-white/10">
+            <h1 class="">
+                <i class="fa-solid fa-user-tie"></i> <span class="font-bold dark:text-white">SLR클럽 유저관리</span> 
+                <a class="text-lg" href="/main/options.html" target="_blank" title="기능설명 바로가기"><i class="fa-solid fa-circle-question text-sm"></i></a>
+            </h1>
+            <div class="flex">
+                <input type="checkbox" data-alt-on="ON" data-alt-off="OFF" class="tog-checkbox" id="togBlocking" />
             </div>
         </div>
-        <div class="overflow-y-auto h-full relative">
+        <div class="bg-neutral-50/50 dark:bg-[#2d2d2d] shadow-[inset_0_0px_2px_rgba(125,125,125,0.15)] overflow-y-auto h-full relative py-4 px-4" id="blockingUserContainer">
             <div class="hidden absolute top-0 left-0 w-full h-full bg-white dark:bg-black/0 opacity-40 z-10" id="blocklistScreen"></div>
             <!-- 차단유저 리스트가 여기에 동적으로 추가됩니다. -->
-            <ul class="h-full flex flex-col gap-2" id="blockingUserList"></ul>
+            <ul class="flex flex-col gap-2" id="blockingUserList"></ul>
 
         </div>
-        <div>
-            <div class="flex justify-between items-center mt-4 gap-2">
-                <div>
-                    <a class="text-lg" href="/main/options.html" target="_blank" title="기능설명 바로가기"><i class="fa-solid fa-circle-question"></i> <span class="text-xs">Version:1.0.0</span></a>
+        <div class="px-4 py-3 border-t border-neutral-200 dark:border-white/10">
+            <div class="flex justify-between items-end gap-2">
+                <div class="flex items-center gap-2">
+                    <label class="inline-flex items-center gap-2" for="autoRoulette" title="자동 룰렛 돌리기로 보너트 포인트를 획득할 수 있습니다.">
+                        <input data-alt-on="자동룰렛 ON" data-alt-off="자동룰렛 OFF" class="tog-checkbox type2 !w-24" type="checkbox" id="autoRoulette" />
+                    </label>
                 </div>
                 <div>
                     <button class="btn btn-sm" id="btnBackup"><i class="fa-solid fa-floppy-disk"></i> 백업</button>

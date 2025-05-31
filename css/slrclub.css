@@ -38,10 +38,6 @@
 #recent_post>table tbody td.list_click{display: none;}
 #recent_post>table tbody tr:nth-child(5)~tr{display: none;}
 
-.isGal #recent_post{border-color: #555555;}
-.isGal #post_hd{border-color: #555555;}
-.isGal #recent_post table tbody td.list_num .cate {    background: rgb(221 221 221 / 18%);}
-
 #post_comment .rewrite_box { width: calc(100% - 220px);}
 #post_comment .rewrite_box textarea, 
 #cmtrep .rewrite_box textarea{resize: vertical; min-height: 73px; height: 73px; max-height: 600px; outline: none; border-radius: 3px; line-height: 1.2;}
@@ -49,3 +45,11 @@
 #cmtrep .rewrite_box{border-radius: 3px;}
 #post_comment .rewrite_box:focus-within, 
 #cmtrep .rewrite_box:focus-within{border-color: #999999;}
+
+.isGal #recent_post{border-color: #555555;}
+.isGal #post_hd{border-color: #555555;}
+.isGal #recent_post table tbody td.list_num .cate {    background: rgb(221 221 221 / 18%);}
+.isGal #post_comment .rewrite_box, 
+.isGal #cmtrep .rewrite_box{border: 1px solid #565656;}
+.isGal #post_comment .rewrite_box textarea, 
+.isGal #cmtrep .rewrite_box textarea{border-width: 0;}

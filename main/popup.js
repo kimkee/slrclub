@@ -1,16 +1,28 @@
 
-chrome.storage.sync.get(['theme','blockingData','blockingEnabled'], (result) => {
-    console.log('팝업에서 저장된 데이터:', result.theme);
+chrome.storage.sync.get(['theme','blockingData','blockingEnabled','isAutoRoulette'], (result) => {
+    console.log('테마 : ', result.theme);
     blockingData = result.blockingData || [];
 
-    console.log('차단 데이터:', blockingData);
+    console.log('차단 데이터 리스트 : ', blockingData);
     setDataList(blockingData);
-    // setDataList([]);
-    console.log(result.blockingEnabled);
+    
+    console.log('메모차단 활성화 : '+ result.blockingEnabled);
     const isBlockingEnabled = result.blockingEnabled === undefined ? true : result.blockingEnabled;
     document.getElementById('togBlocking').checked = isBlockingEnabled;
     setBlockingEnabled(isBlockingEnabled);
+    
+    const isAutoRoulette = result.isAutoRoulette === undefined ? false : result.isAutoRoulette;
+    document.getElementById('autoRoulette').checked = isAutoRoulette;
+    setIsAutoRoulette(isAutoRoulette);
 });
+
+const setIsAutoRoulette = (isAutoRoulette) => {
+    if(isAutoRoulette){
+        document.getElementById('autoRoulette').checked = true;
+    }else{
+        document.getElementById('autoRoulette').checked = false;
+    }
+}
 
 const setBlockingEnabled = (isBlockingEnabled) => {
     if(isBlockingEnabled){
@@ -27,11 +39,18 @@ const setDataList = (data) => {
         
         ${data.length > 0 ? `
             ${data.map(item => `
-            <li class="flex items-start justify-start relative p-2 border border-gray-300 dark:border-gray-600 text-xs pr-10">
-                <span class="w-18 flex-none font-medium break-all border-r border-gray-300 dark:border-gray-600 px-1 mr-2">
-                    <input type="checkbox" data-key="${item.key}" data-name="${item.name}" ${item.cutoff ? 'checked' : ''} class="tog-checkbox cutoff" title="해당 회원의 글이 목록에서 보이지 않게 합니다." />
+            <li class="rounded-md text-xs pr-8 leading-0 flex relative p-2
+                bg-white border border-neutral-200/60 dark:bg-neutral-800 dark:border-neutral-700/70 dark:hover:bg-neutral-900/50
+                hover:shadow-md hover:shadow-neutral-100 dark:hover:shadow-neutral-800"
+            >
+                <span class="w-18 flex-none font-medium break-all border-r border-neutral-300 dark:border-neutral-700 pr-1 mr-2">
+                    <input type="checkbox" class="tog-checkbox type2 !w-14 cutoff"
+                        data-alt-on="차단" data-alt-off="메모" data-key="${item.key}" 
+                        data-name="${item.name}" ${item.cutoff ? 'checked' : ''}
+                        title="해당 회원의 글이 목록에서 보이지 않게 합니다." 
+                    />
                 </span>
-                <span class="w-28 flex-none font-medium break-all border-r border-gray-300 dark:border-gray-600 p-1 mr-2">${item.name}</span>
+                <span class="w-28 flex-none font-medium break-all border-r border-neutral-300 dark:border-neutral-700 p-1 mr-2 leading-4 cursor-default">${item.name}</span>
                 <span class="memo w-full text-xs">
                     <input type="text" value="${item.memo}" data-key="${item.key}" class="memo-val w-full p-1" />
                 </span>
@@ -40,13 +59,24 @@ const setDataList = (data) => {
                 </button>
             </li>
         `).join('')}` : `
-            <li class="text-center h-full flex justify-center flex-col gap-5 items-center py-20">
+            <li class="text-center h-[400px] flex justify-center flex-col gap-5 items-center py-20">
                 <i class="fa-solid fa-magnifying-glass text-2xl"></i> <p class="text-sm">메모,차단 하신 유저가 없습니다.</p>
             </li>
         `}
         
     `;
     document.getElementById('blockingUserList').innerHTML = DATALIST; // 새 데이터 추가
+
+    const target = document.getElementById('blockingUserContainer');
+    const observer = new ResizeObserver(entries => {
+        entries.forEach(entry => {
+            console.log('크기 변경됨:', entry.contentRect);
+            const el = entry.target;
+            (el.scrollHeight > el.clientHeight) ? el.classList.add('pr-1') : el.classList.remove('pr-1');
+        });
+    });
+    observer.observe(target);
+
 };
 
 
@@ -55,7 +85,7 @@ document.addEventListener('change', (event) => cutOffUpdate(event));
 document.addEventListener('keypress', (event) => event.key === 'Enter' ?  memoUpdate(event) : null);
 
 const cutOffUpdate = (event) => {
-    const checkbox = event.target.closest(".tog-checkbox.cutoff");
+    const checkbox = event.target.closest(".tog-checkbox.type2.cutoff");
     if(!checkbox) return;
     
     const key = checkbox.getAttribute('data-key');
@@ -113,17 +143,26 @@ document.addEventListener('click', (event) => {
 
 document.getElementById('togBlocking').addEventListener('change', () => {
     const isChecked = document.getElementById('togBlocking').checked;
-
     const dataToSave = {
         blockingEnabled: isChecked
     };
-
     // chrome.storage.sync에 데이터 저장
     chrome.storage.sync.set(dataToSave, () => {
         console.log('토글 블록리스트', dataToSave);
         setBlockingEnabled(isChecked);
     });
+});
 
+document.getElementById('autoRoulette').addEventListener('change', () => {
+    const isChecked = document.getElementById('autoRoulette').checked;
+    const dataToSave = {
+        isAutoRoulette: isChecked
+    };
+    // chrome.storage.sync에 데이터 저장
+    chrome.storage.sync.set(dataToSave, () => {
+        console.log('오토룰렛', dataToSave);
+        setIsAutoRoulette(isChecked);
+    });
 });
 
 
@@ -181,28 +220,3 @@ document.getElementById('fileInput').addEventListener('change', (event) => {
     event.target.value = ''; // 파일 선택 후 input 초기화
     location.reload(); // 페이지 새로고침
 });
-
-
-/* // 웹페이지에 DOM 이벤트 리스너 추가
-document.addEventListener('click', (event) => {
-    if (event.target && event.target.id === 'saveButton') { // 버튼 ID 확인
-
-        const dataToSave = {
-            popkey: '잇싸쓰2'
-        };
-    
-        // chrome.storage.sync에 데이터 저장
-        chrome.storage.sync.set(dataToSave, () => {
-            console.log('팝업 에서 데이터가 저장되었습니다:', dataToSave);
-            alert('팝업 에서 데이터가 저장되었습니다');
-        });
-    }
-
-});
-
-
-
-chrome.storage.sync.get(['popkey'], (result) => {
-    console.log('팝업에서 저장된 데이터:', result.popkey);
-    document.getElementById('popdata').textContent = result.popkey;
-}); */
