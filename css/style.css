@@ -2,7 +2,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 body{
-    @apply bg-white text-gray-600 text-base;
+    @apply text-gray-600 text-base;
 }
 .dark body{
     @apply bg-black/80 text-gray-300;
@@ -12,9 +12,10 @@ body{
 ::-webkit-scrollbar-track{background-color: transparent;}
 ::-webkit-scrollbar-corner{background-color: transparent;}
 ::-webkit-scrollbar-button{display: none;}
-::-webkit-scrollbar-thumb{width: 10px; border-radius:7px; background-color: #00000044;border: solid 3px transparent; background-clip: content-box;}
-::-webkit-scrollbar-thumb:hover{background-color:#aaaaaa;}
-.dark ::-webkit-scrollbar-thumb:hover{background-color:#00000044;}
+::-webkit-scrollbar-thumb{width: 10px; border-radius:7px; background-color: #aaaaaa55;border: solid 3px transparent; background-clip: content-box;}
+::-webkit-scrollbar-thumb:hover{background-color:#aaaaaa66;}
+.dark ::-webkit-scrollbar-thumb{background-color:#444444;}
+.dark ::-webkit-scrollbar-thumb:hover{background-color:#555555;}
 button{ @apply border-none outline-none cursor-pointer; }
 input[type="text"]{ @apply outline-gray-500; }
 
@@ -62,22 +63,20 @@ input[type="text"]{ @apply outline-gray-500; }
 
 .tog-checkbox{
     @apply relative inline-flex items-center h-7  rounded-full w-13 bg-gray-200 cursor-pointer border border-gray-300
-    dark:bg-gray-200/20 dark:border-gray-800 dark:checked:bg-gray-600/20 text-black/40 dark:text-gray-300
-    appearance-none
-    transition-colors duration-200 ease-in-out;
+    dark:bg-[#555555] dark:border-[#555555] dark:checked:bg-gray-600/20 text-black/40 dark:text-gray-300
+    appearance-none    ;
     &:disabled{ @apply opacity-70 cursor-not-allowed; }
-    &::before{ @apply text-[0.7rem] content-['OFF'] absolute  right-1  ;}
+    &::before{ @apply text-[0.7rem] content-['OFF'] absolute  right-1 inline-flex ;}
     &:checked::before{ @apply content-['ON'] left-1.5 text-white;}
     &:checked { @apply bg-blue-500 border border-blue-500 ; }
-    &::after{
-        @apply content-[''] inline-block w-5 h-5 rounded-full bg-white shadow translate-x-0.5 ;
-    }
-    &:checked::after { @apply translate-x-7 bg-white; }
+    &::after{ @apply content-[''] inline-block w-5 h-5 rounded-full bg-white shadow absolute left-1 ; }
+    &:checked::after { @apply left-auto right-1  bg-white; }
     
-    &.cutoff{ @apply h-6  w-14  rounded-sm}
-    &.cutoff::after{ @apply rounded-sm h-4.5 w-4.5}
-    &.cutoff::before{ @apply content-['차단']}
-    &.cutoff:checked::after { @apply translate-x-8.5  }
+    &.type2{ @apply h-6  w-14  rounded-sm}
+    &.type2::after{ @apply rounded-sm h-4.5 w-4.5 left-0.5}
+    &.type2::before{ @apply content-[attr(data-alt-off)]  leading-0}
+    &.type2:checked::after { @apply left-auto right-0.5 }
+    &.type2:checked::before{ @apply content-[attr(data-alt-on)] }
 }
 
 .dark .tog-checkbox::after{ @apply bg-white/50;}

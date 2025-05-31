@@ -6,6 +6,7 @@ const slrclubUI = {
         this.blocking.init();
         this.recent.init();
         this.autoHeight.init();
+        this.roulette.init();
     },
     blocking: {
         init: function() {
@@ -221,8 +222,8 @@ const slrclubUI = {
                     target.appendChild(table);
                     table.style.visibility = "visible";
                     table.querySelectorAll('tr .sbj a').forEach(els => {
-                        els.setAttribute('target', '_blank');
-                        els.setAttribute('title', '새창 열림');
+                        // els.setAttribute('target', '_blank');
+                        //  els.setAttribute('title', '새창 열림');
                         const url = els.href;
                         const id = new URL(url).searchParams.get("id");
                         // console.log(category[id]);
@@ -263,6 +264,66 @@ const slrclubUI = {
             el.style.height = el.scrollHeight - 0  + 'px'; // 높이 조정
         }
     },
+    roulette: {
+        init: function() {
+            
+            const _this = this;
+            
+            chrome.storage.sync.get(['isAutoRoulette'], (result) => {
+				const isAutoRoulette = result.isAutoRoulette ;
+                if(isAutoRoulette === undefined) {
+					chrome.storage.sync.set({ isAutoRoulette: false }, () => {
+						// console.log('차단 데이터가 초기화되었습니다.');
+					});
+				}
+                if (isAutoRoulette === true) {
+                    _this.time = setInterval( ()=> _this.start(), 3000);
+                }
+            });
+        },
+        run: function() {
+            const _this = this;
+            setTimeout( _this.end(), 5000);
+        },
+        start: function() {
+            const _this = this;
+            fetch('/service/game/roulette.php', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded', }, body: 'gamestart=true' })
+                .then(res => {
+                    if (!res.ok) throw new Error('서버 응답 실패');
+                    return res.json();  // JSON 응답 파싱
+                })
+                .then(data => {
+                    if (data.msg === 'start') {
+                        _this.run();
+                    } else {
+                        console.log(data);
+                        clearInterval(_this.time); // 인터벌 중지
+                    }
+                })
+                .catch(err => {
+                    console.error('요청 실패:', err);
+                });
+
+        },
+        end: function() {
+            fetch('/service/game/roulette.php', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded', }, body: 'gameend=true' })
+                .then(res => {
+                    if (!res.ok) throw new Error('서버 응답 실패');
+                    return res.json();
+                })
+                .then(data => {
+                    if (data.msg) {
+                        console.log(data.msg);
+                        alert(data.msg);
+                        clearInterval(_this.time);
+                    }
+                })
+                .catch(err => {
+                    console.error('요청 실패:', err);
+                });
+
+        },
+    },
     theme: {
         init: function(){
             this.set();
@@ -296,3 +357,61 @@ const slrclubUI = {
 }
 
 slrclubUI.init();
+
+
+
+
+/* 
+
+var run_valid = 0;
+
+$(function () {
+  $(".roulette_arrow").click(function () {
+    if (run_valid == 0) {
+      run_valid = 1;
+      run_game();
+      return false;
+    } else {
+      return false;
+    }
+
+  })
+});
+
+function run_roulette(deg) {
+  deg = deg * -1;
+  var div = document.getElementById('roulette');
+  div.style.webkitTransform = 'rotate(' + deg + 'deg)';
+  div.style.mozTransform = 'rotate(' + deg + 'deg)';
+  div.style.msTransform = 'rotate(' + deg + 'deg)';
+  div.style.oTransform = 'rotate(' + deg + 'deg)';
+  div.style.transform = 'rotate(' + deg + 'deg)';
+  setTimeout(end_game, 5000);
+
+}
+function end_game() {
+  $.ajax({
+    url: '/service/game/roulette.php', data: 'gameend=true', type: 'post',
+    success: function (data) {
+      if (data.msg) {
+        alert(data.msg);
+      }
+    }
+  });
+}
+
+function run_game() {
+  $.ajax({
+    url: '/service/game/roulette.php', data: 'gamestart=true', type: 'post',
+    success: function (data) {
+      if (data.msg == 'start') {
+        run_roulette(data.angle);
+      } else {
+        alert(data.msg);
+      }
+
+    }
+  });
+}
+
+ */
