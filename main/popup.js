@@ -1,5 +1,5 @@
 
-chrome.storage.sync.get(['theme','blockingData','blockingEnabled','isAutoRoulette'], (result) => {
+chrome.storage.local.get(['theme','blockingData','blockingEnabled','isAutoRoulette'], (result) => {
     console.log('테마 : ', result.theme);
     blockingData = result.blockingData || [];
 
@@ -98,7 +98,7 @@ const cutOffUpdate = (event) => {
     if (itemToUpdate) {
         itemToUpdate.cutoff = newChecked;
     }
-    chrome.storage.sync.set({ blockingData }, () => {
+    chrome.storage.local.set({ blockingData }, () => {
         console.log('차단 업데이트되었습니다:', blockingData);
     });
 };
@@ -118,7 +118,7 @@ const memoUpdate = (event) => {
         }
     }
     // Save updated data to chrome.storage.sync
-    chrome.storage.sync.set({ blockingData }, () => {
+    chrome.storage.local.set({ blockingData }, () => {
         console.log('차단 데이터가 업데이트되었습니다:', blockingData);
     });
 };
@@ -135,7 +135,7 @@ document.addEventListener('click', (event) => {
         // 삭제할 데이터의 key 값을 사용하여 해당 데이터를 삭제
         blockingData = blockingData.filter(item => item.key !== key);
         setDataList(blockingData); // 새 데이터 추가
-        chrome.storage.sync.set({ blockingData }, () => {
+        chrome.storage.local.set({ blockingData }, () => {
             console.log('차단 데이터가 저장되었습니다:', blockingData);
         });
     }
@@ -147,7 +147,7 @@ document.getElementById('togBlocking').addEventListener('change', () => {
         blockingEnabled: isChecked
     };
     // chrome.storage.sync에 데이터 저장
-    chrome.storage.sync.set(dataToSave, () => {
+    chrome.storage.local.set(dataToSave, () => {
         console.log('토글 블록리스트', dataToSave);
         setBlockingEnabled(isChecked);
     });
@@ -159,7 +159,7 @@ document.getElementById('autoRoulette').addEventListener('change', () => {
         isAutoRoulette: isChecked
     };
     // chrome.storage.sync에 데이터 저장
-    chrome.storage.sync.set(dataToSave, () => {
+    chrome.storage.local.set(dataToSave, () => {
         console.log('오토룰렛', dataToSave);
         setIsAutoRoulette(isChecked);
     });
@@ -167,7 +167,7 @@ document.getElementById('autoRoulette').addEventListener('change', () => {
 
 
 document.getElementById('btnBackup').addEventListener('click', () => {
-    chrome.storage.sync.get(null, (items)=> {
+    chrome.storage.local.get(null, (items)=> {
         const dataToBackup = JSON.stringify(items, null, 2); // JSON 형식으로 변환
         const blob = new Blob([dataToBackup], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
@@ -206,7 +206,8 @@ document.getElementById('fileInput').addEventListener('change', (event) => {
         reader.onload = (e) => {
             try {
                 const data = JSON.parse(e.target.result);
-                chrome.storage.sync.set(data, () => {
+                data.migrated = true; // 마이그레이션 플래그 추가
+                chrome.storage.local.set(data, () => {
                     console.log('복원 완료:', data);
                     alert('복원이 완료되었습니다.');
                 });

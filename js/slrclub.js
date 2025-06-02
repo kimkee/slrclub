@@ -68,7 +68,7 @@ const slrclubUI = {
                 uid = name;
             }
             console.log("addUser " +uid , name);
-            chrome.storage.sync.get('blockingData', (result) => {
+            chrome.storage.local.get('blockingData', (result) => {
                 if (chrome.runtime.lastError) {
                     console.warn("storage 접근 실패:", chrome.runtime.lastError.message);
                     return;
@@ -110,7 +110,7 @@ const slrclubUI = {
                 // 새로운 데이터를 배열의 맨 앞에 추가
                 blockingData.unshift(newBlockingData);
 
-                chrome.storage.sync.set( {blockingData} , () => {
+                chrome.storage.local.set( {blockingData} , () => {
                     console.log('차단 데이터가 저장되었습니다:', blockingData);
                     // location.reload(); // 페이지 새로고침
                 });
@@ -118,17 +118,17 @@ const slrclubUI = {
 
         },
         set: function() {
-            chrome.storage.sync.get(['blockingData','blockingEnabled'], (result) => {
+            chrome.storage.local.get(['blockingData','blockingEnabled'], (result) => {
                 // console.log('저장된 데이터:', result.blockingData);
 				const blockingData = result.blockingData ;
 				const blockingEnabled = result.blockingEnabled ;
                 if(blockingData === undefined) {
-					chrome.storage.sync.set({ blockingData: [] }, () => {
+					chrome.storage.local.set({ blockingData: [] }, () => {
 						console.log('차단 데이터가 초기화되었습니다.');
 					});
 				}
 				if(blockingEnabled === undefined) {
-					chrome.storage.sync.set({ blockingEnabled: true }, () => {
+					chrome.storage.local.set({ blockingEnabled: true }, () => {
 						console.log('차단 기능이 활성화되었습니다.');
 					});
 				}
@@ -270,10 +270,10 @@ const slrclubUI = {
             
             const _this = this;
             
-            chrome.storage.sync.get(['isAutoRoulette'], (result) => {
+            chrome.storage.local.get(['isAutoRoulette'], (result) => {
 				const isAutoRoulette = result.isAutoRoulette ;
                 if(isAutoRoulette === undefined) {
-					chrome.storage.sync.set({ isAutoRoulette: false }, () => {
+					chrome.storage.local.set({ isAutoRoulette: false }, () => {
 						// console.log('차단 데이터가 초기화되었습니다.');
 					});
 				}
@@ -336,7 +336,7 @@ const slrclubUI = {
 
             const setTheme = () => {
                 const themeStat = window.matchMedia('(prefers-color-scheme: dark)').matches  ? 'dark' : 'light';
-                chrome.storage.sync.set({
+                chrome.storage.local.set({
                     theme: themeStat
                 }, () => {
                     // console.log('테마가 설정되었습니다:', themeStat);

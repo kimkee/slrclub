@@ -27,7 +27,7 @@ chrome.action.onClicked.addListener((tab) => {
     (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
 ); */
 
-chrome.storage.sync.get(['theme'], (result) => {
+chrome.storage.local.get(['theme'], (result) => {
 	console.log('저장된 테마:', result);
 	if (result.theme === 'dark') {
 		document.documentElement.classList.add('dark');
