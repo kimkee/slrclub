@@ -40,8 +40,8 @@ const setDataList = (data) => {
         ${data.length > 0 ? `
             ${data.map(item => `
             <li class="rounded-md text-xs pr-8 leading-0 flex relative p-2
-                bg-white border border-neutral-200/60 dark:bg-neutral-800 dark:border-neutral-700/70 dark:hover:bg-neutral-900/50
-                hover:shadow-md hover:shadow-neutral-100 dark:hover:shadow-neutral-800"
+                bg-white border border-neutral-300/50 dark:bg-neutral-800 dark:border-neutral-700/70 dark:hover:bg-neutral-900/50
+                hover:shadow-md hover:shadow-neutral-100 dark:hover:shadow-neutral-900/20"
             >
                 <span class="w-18 flex-none font-medium break-all border-r border-neutral-300 dark:border-neutral-700 pr-1 mr-2">
                     <input type="checkbox" class="tog-checkbox type2 !w-14 cutoff"

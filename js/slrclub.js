@@ -53,7 +53,7 @@ const slrclubUI = {
         },
         addHTML: function(uid , name) {
             document.querySelector('#setBlockUser')?.remove(); // 기존의 memoLI 요소를 제거
-            document.getElementById('su').querySelector('ul').insertAdjacentHTML('beforeend', `
+            document.getElementById('su')?.querySelector('ul').insertAdjacentHTML('beforeend', `
                 <li  id="setBlockUser" href="javascript:;" class="${uid}" data-key=${uid} data-name="${name}">
                     <span>
                         <img src="https://media.slrclub.com/main/layer/icon_memo.gif" width="13" height="12" alt="info"><span>메모&차단 하기</span>
@@ -112,7 +112,7 @@ const slrclubUI = {
 
                 chrome.storage.sync.set( {blockingData} , () => {
                     console.log('차단 데이터가 저장되었습니다:', blockingData);
-                    location.reload(); // 페이지 새로고침
+                    // location.reload(); // 페이지 새로고침
                 });
             });
 
@@ -198,9 +198,6 @@ const slrclubUI = {
 
             document.querySelector('#recent_post')?.remove();
             document.querySelector('.rewview_title_wrap')?.insertAdjacentHTML('beforebegin', `<div class="recent_post" id="recent_post">RECENT_POST</div>`);
-            // $("#recent_post" ).load( "/bbs/zboard.php?sid1=19259&setsearch=id&keyword=19259 table:first-child", function(els){
-            //     // console.log(els);
-            // });
 
             
             const target = document.getElementById("recent_post");
@@ -212,36 +209,40 @@ const slrclubUI = {
                 .catch(err => console.error("JSON 파일 로드 실패:", err));
                 
             await fetch(`/bbs/zboard.php?sid1=${uid}&setsearch=id&keyword=${uid}`)
-            .then(response => response.text())
-            .then(html => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, "text/html");
-                const table = doc.querySelector("table"); // 첫 번째 <table>
-                if (table) {
-                    target.innerHTML = "";
-                    target.appendChild(table);
-                    table.style.visibility = "visible";
-                    table.querySelectorAll('tr .sbj a').forEach(els => {
-                        // els.setAttribute('target', '_blank');
-                        //  els.setAttribute('title', '새창 열림');
-                        const url = els.href;
-                        const id = new URL(url).searchParams.get("id");
-                        // console.log(category[id]);
-                        els.closest("tr").querySelector('.list_num').innerHTML = `<span class="cate">${category[id]}</span>`;
-                        els.closest("tr").querySelector('.list_num').setAttribute('data-id', id);
-                    });
-                    document.getElementById('post_hd')?.remove();
-                    target.insertAdjacentHTML('afterbegin', `
-                        <div class="post_hd" id="post_hd">
-                            <a href="/bbs/zboard.php?sid1=${uid}&setsearch=id&keyword=${uid}" target="_blank" class="link">
-                                <span class="name"><strong>${name}</strong> 님의 최근글</span>
-                                <span class="more">더보기 >></span>
-                            </a>
-                        </div>
-                    `);
-                }
-            })
-            .catch(err => console.error("요청 실패:", err));
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, "text/html");
+                    const table = doc.querySelector("table"); // 첫 번째 <table>
+                    if (table) {
+                        target.innerHTML = "";
+                        target.appendChild(table);
+                        table.style.visibility = "visible";
+                        table.querySelectorAll('tr .sbj a').forEach(els => {
+                            // els.setAttribute('target', '_blank');
+                            //  els.setAttribute('title', '새창 열림');
+                            const url = els.href;
+                            const id = new URL(url).searchParams.get("id");
+                            // console.log(category[id]);
+                            els.closest("tr").querySelector('.list_num').innerHTML = `<span class="cate">${category[id]}</span>`;
+                            els.closest("tr").querySelector('.list_num').setAttribute('data-id', id);
+                        });
+                        document.getElementById('post_hd')?.remove();
+                        target.insertAdjacentHTML('afterbegin', `
+                            <div class="post_hd" id="post_hd">
+                                <a href="/bbs/zboard.php?sid1=${uid}&setsearch=id&keyword=${uid}" target="_blank" class="link">
+                                    <span class="name"><strong>${name}</strong> 님의 최근글</span>
+                                    <span class="more">더보기 >></span>
+                                </a>
+                            </div>
+                        `);
+                    }else {
+                        document.querySelector('#recent_post')?.remove();
+                    }
+                })
+                .catch(err => {
+                    console.error("요청 실패:", err)
+                });
         }
     },
     autoHeight:{
