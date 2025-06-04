@@ -33,7 +33,8 @@ chrome.runtime.onInstalled.addListener(details => {
 
 function migrateStorage() {
   chrome.storage.local.get('migrated', result => {
-    if (result.migrated) {
+	const migratedVersion = result.migrated || 0;
+    if (migratedVersion == 2) {
       // 이미 마이그레이션 완료
       return;
     }
@@ -43,7 +44,7 @@ function migrateStorage() {
       // 2️⃣ local로 저장
       chrome.storage.local.set(oldData, () => {
         // 3️⃣ 마이그레이션 플래그 저장
-        chrome.storage.local.set({ migrated: true }, () => {
+        chrome.storage.local.set({ migrated: 2 }, () => {
           console.log("데이터 마이그레이션 완료");
         });
       });

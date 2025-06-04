@@ -206,7 +206,7 @@ document.getElementById('fileInput').addEventListener('change', (event) => {
         reader.onload = (e) => {
             try {
                 const data = JSON.parse(e.target.result);
-                data.migrated = true; // 마이그레이션 플래그 추가
+                data.migrated = 2; // 마이그레이션 플래그 추가
                 chrome.storage.local.set(data, () => {
                     console.log('복원 완료:', data);
                     alert('복원이 완료되었습니다.');

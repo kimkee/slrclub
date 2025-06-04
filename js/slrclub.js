@@ -20,7 +20,7 @@ const slrclubUI = {
                 if (!btnUser) return;
                 const userId = btnUser.getAttribute('data-xuid');
                 const userName = btnUser.innerText;
-                console.log(userId);
+                console.log(userId ,  userName);
                 // const attrHref = event.target.closest('[href="#popup_menu_area"]')?.getAttribute('href');
                 // const attrClass = event.target.closest('[href="#popup_menu_area"]')?.getAttribute('class');
                 // const attrName = event.target.closest('[href="#popup_menu_area"]')?.innerText;
@@ -112,7 +112,7 @@ const slrclubUI = {
 
                 chrome.storage.local.set( {blockingData} , () => {
                     console.log('차단 데이터가 저장되었습니다:', blockingData);
-                    // location.reload(); // 페이지 새로고침
+                    location.reload(); // 페이지 새로고침
                 });
             });
 
@@ -307,6 +307,7 @@ const slrclubUI = {
 
         },
         end: function() {
+            const _this = this;
             fetch('/service/game/roulette.php', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded', }, body: 'gameend=true' })
                 .then(res => {
                     if (!res.ok) throw new Error('서버 응답 실패');
