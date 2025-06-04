@@ -35,6 +35,12 @@ const setBlockingEnabled = (isBlockingEnabled) => {
 }
 
 const setDataList = (data) => {
+    /*
+    document.querySelectorAll('#blockingUserList>li').forEach((li,idx)=>{
+        li.querySelector('.w-28').innerText = '테스트'+(idx+1)
+        li.querySelector('input.memo-val').value = '메모입니다.'+(idx+1)
+    })
+    */
     const DATALIST = `
         
         ${data.length > 0 ? `
