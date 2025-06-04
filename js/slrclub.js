@@ -20,7 +20,7 @@ const slrclubUI = {
                 if (!btnUser) return;
                 const userId = btnUser.getAttribute('data-xuid');
                 const userName = btnUser.innerText;
-                console.log(userId);
+                console.log(userId ,  userName);
                 // const attrHref = event.target.closest('[href="#popup_menu_area"]')?.getAttribute('href');
                 // const attrClass = event.target.closest('[href="#popup_menu_area"]')?.getAttribute('class');
                 // const attrName = event.target.closest('[href="#popup_menu_area"]')?.innerText;
@@ -68,7 +68,7 @@ const slrclubUI = {
                 uid = name;
             }
             console.log("addUser " +uid , name);
-            chrome.storage.sync.get('blockingData', (result) => {
+            chrome.storage.local.get('blockingData', (result) => {
                 if (chrome.runtime.lastError) {
                     console.warn("storage 접근 실패:", chrome.runtime.lastError.message);
                     return;
@@ -110,25 +110,25 @@ const slrclubUI = {
                 // 새로운 데이터를 배열의 맨 앞에 추가
                 blockingData.unshift(newBlockingData);
 
-                chrome.storage.sync.set( {blockingData} , () => {
+                chrome.storage.local.set( {blockingData} , () => {
                     console.log('차단 데이터가 저장되었습니다:', blockingData);
-                    // location.reload(); // 페이지 새로고침
+                    location.reload(); // 페이지 새로고침
                 });
             });
 
         },
         set: function() {
-            chrome.storage.sync.get(['blockingData','blockingEnabled'], (result) => {
+            chrome.storage.local.get(['blockingData','blockingEnabled'], (result) => {
                 // console.log('저장된 데이터:', result.blockingData);
 				const blockingData = result.blockingData ;
 				const blockingEnabled = result.blockingEnabled ;
                 if(blockingData === undefined) {
-					chrome.storage.sync.set({ blockingData: [] }, () => {
+					chrome.storage.local.set({ blockingData: [] }, () => {
 						console.log('차단 데이터가 초기화되었습니다.');
 					});
 				}
 				if(blockingEnabled === undefined) {
-					chrome.storage.sync.set({ blockingEnabled: true }, () => {
+					chrome.storage.local.set({ blockingEnabled: true }, () => {
 						console.log('차단 기능이 활성화되었습니다.');
 					});
 				}
@@ -270,10 +270,10 @@ const slrclubUI = {
             
             const _this = this;
             
-            chrome.storage.sync.get(['isAutoRoulette'], (result) => {
+            chrome.storage.local.get(['isAutoRoulette'], (result) => {
 				const isAutoRoulette = result.isAutoRoulette ;
                 if(isAutoRoulette === undefined) {
-					chrome.storage.sync.set({ isAutoRoulette: false }, () => {
+					chrome.storage.local.set({ isAutoRoulette: false }, () => {
 						// console.log('차단 데이터가 초기화되었습니다.');
 					});
 				}
@@ -307,6 +307,7 @@ const slrclubUI = {
 
         },
         end: function() {
+            const _this = this;
             fetch('/service/game/roulette.php', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded', }, body: 'gameend=true' })
                 .then(res => {
                     if (!res.ok) throw new Error('서버 응답 실패');
@@ -336,7 +337,7 @@ const slrclubUI = {
 
             const setTheme = () => {
                 const themeStat = window.matchMedia('(prefers-color-scheme: dark)').matches  ? 'dark' : 'light';
-                chrome.storage.sync.set({
+                chrome.storage.local.set({
                     theme: themeStat
                 }, () => {
                     // console.log('테마가 설정되었습니다:', themeStat);
