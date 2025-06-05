@@ -56,7 +56,7 @@ const setDataList = (data) => {
                         title="해당 회원의 글이 목록에서 보이지 않게 합니다." 
                     />
                 </span>
-                <span class="name w-28 flex-none font-medium break-all border-r border-neutral-300 dark:border-neutral-700 p-1 mr-2 leading-4 cursor-default">${item.name}</span>
+                <span class="name w-28 flex-none font-medium break-all border-r border-neutral-300 dark:border-neutral-700 p-1 mr-2 leading-4 cursor-default" title="구분 : ${item.key}">${item.name}</span>
                 <span class="memo w-full text-xs">
                     <input type="text" value="${item.memo}" data-key="${item.key}" class="memo-val w-full p-1" />
                 </span>
@@ -227,3 +227,51 @@ document.getElementById('fileInput').addEventListener('change', (event) => {
     event.target.value = ''; // 파일 선택 후 input 초기화
     location.reload(); // 페이지 새로고침
 });
+
+
+const popupUI ={
+    init: () => {
+        // 초기화 작업
+        popupUI.font.init();
+    },
+    font: {
+        init: function(){
+            chrome.storage.local.get(['font'], (result) => {
+				font = result.font || 1 ;
+                console.log(font);
+                document.body.style.fontFamily = font; // 즉시 적용
+                const fontSelect = document.getElementById('fontSelect');
+                fontSelect.value = font;
+                fontSelect.addEventListener('change', (event) => {
+                    const selectedValue = event.target.value;
+                    document.body.setAttribute('data-font',selectedValue);
+
+                    chrome.storage.local.set({ font: selectedValue }, () => {
+                        // console.log('차단 데이터가 초기화되었습니다.');
+                    });
+
+                    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+                        const activeTab = tabs[0];
+                        if (!activeTab || !activeTab.url?.includes("slrclub.com")) {
+                            console.log("SLRCLUB 페이지가 아닙니다.");
+                            return;
+                        }
+                        console.log(selectedValue);
+                        chrome.scripting.executeScript({
+                            target: { tabId: activeTab.id },
+                            func: (value) => {
+                                document.body.setAttribute('data-font', value);
+                            },
+                            args: [selectedValue]
+                        });
+                    });
+
+                });
+            });
+        },
+        evt: function(){
+            
+        }
+    }
+}
+popupUI.init();

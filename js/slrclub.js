@@ -7,6 +7,7 @@ const slrclubUI = {
         this.recent.init();
         this.autoHeight.init();
         this.roulette.init();
+        this.font.init();
     },
     blocking: {
         init: function() {
@@ -39,9 +40,16 @@ const slrclubUI = {
                 if (!btnUser) return;
                 const userId = btnUser.getAttribute('data-key');
                 const userName = btnUser.getAttribute('data-name');
+                // const btnInfo = btnUser.closest("ul").querySelector('[alt="info"]').closest("li");
                 if (btnUser.id === "setBlockUser") {
                     console.log(btnUser.id + "버튼 클릭됨");
-                    _this.addUser(userId , userName);
+                    _this.addUser(userId , userName,);
+                    // btnInfo.click();
+                    // setTimeout(() => {
+                        // const userNum = document.querySelector('#lookupbox').querySelector('[src*="info_joindate"]')?.closest('tr').querySelector('td:last-child').innerText.match(/\[\s*(\d+)번\s*회원\s*\]/)[1];
+                        // console.log(userId , userNum);
+                        // _this.addUser(userId , userName,);
+                    // }, 200);
                 }
             })
             document.addEventListener('click', (event) => {
@@ -355,6 +363,19 @@ const slrclubUI = {
             setTheme();
         }
     },
+    font: {
+        init: function() {
+            chrome.storage.local.get(['font'], (result) => {
+                const font = result.font || '1';
+                console.log('저장된 글꼴:', font);
+                document.body.setAttribute('data-font',font);
+                document.querySelector('#comment_box')?.setAttribute('data-font',font); // 즉시 적용
+                chrome.storage.local.set({ font: font }, () => {
+                    // console.log('차단 데이터가 초기화되었습니다.');
+                });
+            });
+        }
+    },     
     param:(function(a) { // URL에서 파라미터 읽어오기  ui.param.***
 		if (a == "") return {};
 		var b = {};
