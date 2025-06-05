@@ -47,14 +47,23 @@ const slrclubUI = {
             document.addEventListener('click', (event) => {
                 const btnUser = event.target.closest('[alt="새로고침"]');
                 if (!btnUser) return;
-                console.log('새로고침');
-                setTimeout(()=>_this.set(), 1000);
+                console.log('댓글 새로고침');
+                setTimeout(()=>_this.set(), 500);
             })
+
+            const target = document.getElementById('cmt_spinner');
+            const observer = new ResizeObserver(entries => {
+                entries.forEach(entry => {
+                    console.log('댓글 새로고침 : ');
+                    setTimeout(()=>_this.set(), 100);
+                });
+            });
+            if (target) observer?.observe(target);
         },
         addHTML: function(uid , name) {
             document.querySelector('#setBlockUser')?.remove(); // 기존의 memoLI 요소를 제거
             document.getElementById('su')?.querySelector('ul').insertAdjacentHTML('beforeend', `
-                <li  id="setBlockUser" href="javascript:;" class="${uid}" data-key=${uid} data-name="${name}">
+                <li id="setBlockUser" href="javascript:;" class="${uid}" data-key=${uid} data-name="${name}">
                     <span>
                         <img src="https://media.slrclub.com/main/layer/icon_memo.gif" width="13" height="12" alt="info"><span>메모&차단 하기</span>
                     </span>

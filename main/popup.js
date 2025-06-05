@@ -37,7 +37,7 @@ const setBlockingEnabled = (isBlockingEnabled) => {
 const setDataList = (data) => {
     /*
     document.querySelectorAll('#blockingUserList>li').forEach((li,idx)=>{
-        li.querySelector('.w-28').innerText = '테스트'+(idx+1)
+        li.querySelector('.name').innerText = '테스트'+(idx+1)
         li.querySelector('input.memo-val').value = '메모입니다.'+(idx+1)
     })
     */
@@ -56,7 +56,7 @@ const setDataList = (data) => {
                         title="해당 회원의 글이 목록에서 보이지 않게 합니다." 
                     />
                 </span>
-                <span class="w-28 flex-none font-medium break-all border-r border-neutral-300 dark:border-neutral-700 p-1 mr-2 leading-4 cursor-default">${item.name}</span>
+                <span class="name w-28 flex-none font-medium break-all border-r border-neutral-300 dark:border-neutral-700 p-1 mr-2 leading-4 cursor-default">${item.name}</span>
                 <span class="memo w-full text-xs">
                     <input type="text" value="${item.memo}" data-key="${item.key}" class="memo-val w-full p-1" />
                 </span>
