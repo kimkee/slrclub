@@ -6,7 +6,8 @@ body[data-font="2"],
 body[data-font="2"] *{ font-family: '맑은 고딕', sans-serif ; }
 body[data-font="3"],
 body[data-font="3"] *{ font-family: 'Noto Sans KR', sans-serif ;}
-
+body,
+body *{ font-family: '맑은 고딕', sans-serif ; }
 #setBlockUser:hover{background-color: rgb(139, 165, 193); cursor: pointer;}
 #bbs_list .list_name .block_user,
 #bbs_view_head .nick .block_user,

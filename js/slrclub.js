@@ -8,6 +8,8 @@ const slrclubUI = {
         this.autoHeight.init();
         this.roulette.init();
         this.font.init();
+        this.css.init();
+        this.adblock.init();
     },
     blocking: {
         init: function() {
@@ -288,12 +290,12 @@ const slrclubUI = {
             const _this = this;
             
             chrome.storage.local.get(['isAutoRoulette'], (result) => {
-				const isAutoRoulette = result.isAutoRoulette ;
+                const isAutoRoulette = result.isAutoRoulette ;
                 if(isAutoRoulette === undefined) {
-					chrome.storage.local.set({ isAutoRoulette: false }, () => {
-						// console.log('차단 데이터가 초기화되었습니다.');
-					});
-				}
+                    chrome.storage.local.set({ isAutoRoulette: false }, () => {
+                        // console.log('차단 데이터가 초기화되었습니다.');
+                    });
+                }
                 if (isAutoRoulette === true) {
                     _this.time = setInterval( ()=> _this.start(), 3000);
                 }
@@ -366,7 +368,7 @@ const slrclubUI = {
     font: {
         init: function() {
             chrome.storage.local.get(['font'], (result) => {
-                const font = result.font || '1';
+                const font = result.font || '2';
                 console.log('저장된 글꼴:', font);
                 document.body.setAttribute('data-font',font);
                 document.querySelector('#comment_box')?.setAttribute('data-font',font); // 즉시 적용
@@ -376,6 +378,36 @@ const slrclubUI = {
             });
         }
     },     
+    css: {
+        init: function() {
+            this.set();
+        },
+        set: function() {
+            const cssurl = chrome.runtime.getURL("css/style1.css");
+            const styleCss = `<link rel="stylesheet" type="text/css" href="${cssurl}">`;
+            document.head.insertAdjacentHTML('beforeend', styleCss);
+        }
+    },
+    adblock: {
+        init: function() {
+            
+            chrome.storage.local.get(['isAdblock'], (result) => {
+				const isAdblock = result.isAdblock ;
+                if (isAdblock === undefined) {
+					chrome.storage.local.set({ isAdblock: false });
+				}
+                if (isAdblock === true) {
+                    slrclubUI.adblock.set();      
+                }
+            });
+            
+        },
+        set: function() {
+            const cssurl = chrome.runtime.getURL("css/ad.css");
+            const styleCss = `<link rel="stylesheet" type="text/css" href="${cssurl}">`;
+            document.head.insertAdjacentHTML('beforeend', styleCss);
+        }
+    },
     param:(function(a) { // URL에서 파라미터 읽어오기  ui.param.***
 		if (a == "") return {};
 		var b = {};

@@ -237,7 +237,7 @@ const popupUI ={
     font: {
         init: function(){
             chrome.storage.local.get(['font'], (result) => {
-				font = result.font || 1 ;
+				font = result.font || 2 ;
                 console.log(font);
                 document.body.style.fontFamily = font; // 즉시 적용
                 const fontSelect = document.getElementById('fontSelect');

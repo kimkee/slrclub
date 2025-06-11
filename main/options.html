@@ -8,79 +8,86 @@
 <link rel="stylesheet" href="/css/all.min.css">
 <link rel="stylesheet" href="/css/tailwind.css">
 </head>
-<body class="p-4 h-dvh flex flex-col bg-white text-gray-900">
-    <div class="flex justify-between flex-row w-full mb-4">
-        <div class="">
-            <a href="/main/popup.html" target="_self"><i class="fa-solid fa-arrow-left"></i></a>
-        </div>
-        <div class="">
-            <!-- <a href="options.html" target="_self"><i class="fa-solid fa-gear"></i></a> -->
-            <!-- <button type="button"><i class="fa-solid fa-floppy-disk"></i></button> -->
-        </div>
+<body class="w-full min-w-120 h-full min-h-140 text-neutral-900 bg-neutral-200">
+    <div class="wrap h-dvh flex flex-col w-full max-w-140 m-auto bg-white dark:bg-neutral-800  shadow-lg">
+        <header class="flex justify-between flex-row w-full px-4 py-3 dark:bg-neutral-700 border-b border-neutral-200 dark:border-white/10">
+            <h1 class="flex items-center gap-1 leading-0">
+                <a class="text-lg leading-0" href="/main/popup.html" target="_self"><i class="fa-solid fa-arrow-left"></i></a>
+                <span class="text leading-0 font-bold ml-2">OPTIONS</span>
+            </h1>
+            <div class="flex">
+                <!-- <a href="options.html" target="_self"><i class="fa-solid fa-gear"></i></a> -->
+                <!-- <button type="button"><i class="fa-solid fa-floppy-disk"></i></button> -->
+                 <input type="checkbox" data-alt-on="ON" data-alt-off="OFF" class="tog-checkbox type2" id="checkBoxAdBlock" />
+                 <!-- <i class="fa-solid fa-circle-question text-sm"></i> -->
+            </div>
+        </header>
+        <main class="bg-neutral-200/30 dark:bg-[#2d2d2d] shadow-[inset_0_0px_2px_rgba(125,125,125,0.15)] overflow-y-auto h-[400px] flex-1 min-h-[400px] relative py-4 px-4">
+            <div class="space-y-3">
+                <h1 class="text-md font-bold dark:text-white">SLRCLUB+</h1> 
+                <p class="text-sm"><a href="https://github.com/kimkee/slrclub" target="_blank">SLRCLUB</a> 커뮤니티에서 유용한 기능을 제공하는 확장 프로그램입니다.</p>
+            </div>
+            
+            <div class="mt-4 space-y-3">
+                <div class="space-y-3">
+                    <h1 class="text-sm font-bold dark:text-white">Version 2.1.0</h1>
+                    <ul class="list-disc list-inside text-xs space-y-2 pl-3">
+                        <li>폰트변경 기능 추가 </li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h1 class="text-sm font-bold dark:text-white">Version 2.0.0</h1>
+                    <ul class="list-disc list-inside text-xs space-y-2 pl-3">
+                        <li>메모제한수 60개 이상 안돼던것 수정됨 </li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h1 class="text-sm font-bold dark:text-white">Version 1.2.0</h1>
+                    <ul class="list-disc list-inside text-xs space-y-2 pl-3">
+                        <li>자동룰렛 기능 추가</li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h1 class="text-sm font-bold dark:text-white">Version 1.1.2</h1>
+                    <ul class="list-disc list-inside text-xs space-y-2 pl-3">
+                        <li>회원의 최근게시물 보기 기능 추가</li>
+                        <li>댓글 입력창 자동높이조절</li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h1 class="text-sm font-bold dark:text-white">Version 1.0.0</h1>
+                    <ul class="list-disc list-inside text-xs space-y-2 pl-3">
+                        <li>버그 수정</li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h1 class="text-sm font-bold dark:text-white">Version 0.0.2</h1>
+                    <ul class="list-disc list-inside text-xs space-y-2 pl-3">
+                        <li>댓글 영역에서의 메모,차단기능 추가</li>
+                        <li>메모하면서 차단까지 같이 할 수 있도록 수정</li>
+                        <li>기존에 회원번호로 구분하던걸  닉네임 기반의 차단 으로 변경</li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h1 class="text-sm font-bold dark:text-white">Version 0.0.1</h1>
+                    <ul class="list-disc list-inside text-xs space-y-2 pl-3">
+                        <li>SLRCLUB내의 특정 사용자의 게시글을 차단,메모 할 수 있는 기능을 제공합니다.</li>
+                        <li>차단,메모 기능을 일시적으로 비활성화 할 수 있습니다.</li>
+                        <li>차단,메모 리스트 데이터를 백업 및 복원 할 수 있습니다.</li>
+                    </ul>
+                </div>
+                <div class="space-y-3 mt-6">
+                    <h1 class="text-sm font-bold dark:text-white">설치</h1>
+                    <p class="text-sm"><a href="https://chromewebstore.google.com/detail/kadhpddmpkggmddeokfaiepjigojggfj?utm_source=item-share-cb" target="_blank">크롭 웹스토어 바로가기 <i class="text-xs fa-solid fa-arrow-up-right-from-square"></i></a></p>
+                    <p class="text-sm">추가 정보: 이 확장 프로그램은 크롬,엣지,웨일 등의 부라우저에 설치 가능합니다. </p>
+                </div>
+            </div>
+        </main>
+        <footer class="px-4 py-3 !pb-4 dark:bg-neutral-700 border-t border-neutral-200 dark:border-white/10 flex justify-between  gap-2">
+            <p class="leading-0"><a class="text-xs" href="https://slrclub.com/" target="_blank"><i class="fa"></i> https://slrclub.com/</a></p>
+            <p class="leading-0"><a class="text-xs" href="https://github.com/kimkee/slrclub" target="_blank"> https://github.com/kimkee/slrclub <i class="text-xs fa-solid fa-arrow-up-right-from-square"></i></a></p>
+        </footer>
     </div>
-    <div class="flex gap-6 flex-col flex-1 overflow-y-auto">
-        <div class="space-y-3">
-            <h1 class="text-xl font-bold dark:text-white">SLRCLUB+</h1> 
-            <p class="text-sm"><a href="https://github.com/kimkee/slrclub" target="_blank">SLRCLUB</a> 커뮤니티에서 유용한 기능을 제공하는 확장 프로그램입니다.</p>
-        </div>
-        <div class="space-y-3">
-            <h1 class="text-lg font-bold dark:text-white">Version 2.1.0</h1>
-            <ul class="list-disc list-inside text-xs space-y-2 pl-3">
-                <li>폰트변경 기능 추가 </li>
-            </ul>
-        </div>
-        <div class="space-y-3">
-            <h1 class="text-lg font-bold dark:text-white">Version 2.0.0</h1>
-            <ul class="list-disc list-inside text-xs space-y-2 pl-3">
-                <li>메모제한수 60개 이상 안돼던것 수정됨 </li>
-            </ul>
-        </div>
-        <div class="space-y-3">
-            <h1 class="text-lg font-bold dark:text-white">Version 1.2.0</h1>
-            <ul class="list-disc list-inside text-xs space-y-2 pl-3">
-                <li>자동룰렛 기능 추가</li>
-            </ul>
-        </div>
-        <div class="space-y-3">
-            <h1 class="text-lg font-bold dark:text-white">Version 1.1.2</h1>
-            <ul class="list-disc list-inside text-xs space-y-2 pl-3">
-                <li>회원의 최근게시물 보기 기능 추가</li>
-                <li>댓글 입력창 자동높이조절</li>
-            </ul>
-        </div>
-        <div class="space-y-3">
-            <h1 class="text-lg font-bold dark:text-white">Version 1.0.0</h1>
-            <ul class="list-disc list-inside text-xs space-y-2 pl-3">
-                <li>버그 수정</li>
-            </ul>
-        </div>
-        <div class="space-y-3">
-            <h1 class="text-lg font-bold dark:text-white">Version 0.0.2</h1>
-            <ul class="list-disc list-inside text-xs space-y-2 pl-3">
-                <li>댓글 영역에서의 메모,차단기능 추가</li>
-                <li>메모하면서 차단까지 같이 할 수 있도록 수정</li>
-                <li>기존에 회원번호로 구분하던걸  닉네임 기반의 차단 으로 변경</li>
-            </ul>
-        </div>
-        <div class="space-y-3">
-            <h1 class="text-lg font-bold dark:text-white">Version 0.0.1</h1>
-            <ul class="list-disc list-inside text-xs space-y-2 pl-3">
-                <li>SLRCLUB내의 특정 사용자의 게시글을 차단,메모 할 수 있는 기능을 제공합니다.</li>
-                <li>차단,메모 기능을 일시적으로 비활성화 할 수 있습니다.</li>
-                <li>차단,메모 리스트 데이터를 백업 및 복원 할 수 있습니다.</li>
-            </ul>
-        </div>
-        <div class="space-y-3">
-            <h1 class="text-xl font-bold dark:text-white">설치</h1>
-            <p class="text-sm"><a href="https://chromewebstore.google.com/detail/kadhpddmpkggmddeokfaiepjigojggfj?utm_source=item-share-cb" target="_blank">크롭 웹스토어 바로가기 <i class="text-xs fa-solid fa-arrow-up-right-from-square"></i></a></p>
-            <p class="text-sm">추가 정보: 이 확장 프로그램은 크롬,엣지,웨일 등의 부라우저에 설치 가능합니다. </p>
-        </div>
-    </div>
-    <div class="flex flex-row justify-between flex-none mt-4">
-        <p><a href="https://slrclub.com/" target="_blank"><i class="fa"></i> https://slrclub.com/</a></p>
-        <p><a href="https://github.com/kimkee/slrclub" target="_blank"> https://github.com/kimkee/slrclub <i class="text-xs fa-solid fa-arrow-up-right-from-square"></i></a></p>
-    </div>
-
     <script src="/main/common.js"></script>
     <script src="/main/options.js"></script>
 </body>

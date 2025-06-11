@@ -1,34 +1,41 @@
-/* document.addEventListener('DOMContentLoaded', () => {
-    const option1 = document.getElementById('option1');
-    const option2 = document.getElementById('option2');
-    const saveButton = document.getElementById('save');
-    const resetButton = document.getElementById('reset');
+const optionUI = {
+    init: function() {
 
-    // 저장된 값을 로드하여 체크박스를 초기화
-    chrome.storage.local.get(['option1', 'option2'], (result) => {
-        option1.checked = result.option1 || false;
-        option2.checked = result.option2 || false;
-    });
-
-    // 저장 버튼 클릭 이벤트
-    saveButton.addEventListener('click', () => {
-        chrome.storage.local.set({
-            option1: option1.checked,
-            option2: option2.checked
-        }, () => {
-            alert('Options saved!');
+        document.querySelectorAll('.overflow-y-auto').forEach(target => {
+            const observer = new ResizeObserver(entries => {
+                entries.forEach(entry => {
+                    // console.log('크기 변경됨:', entry.contentRect);
+                    const el = entry.target;
+                    (el.scrollHeight > el.clientHeight) ? el.classList.add('pr-1') : el.classList.remove('pr-1');
+                });
+            });
+            observer.observe(target);
         });
-    });
 
-    // 초기화 버튼 클릭 이벤트
-    resetButton.addEventListener('click', () => {
-        chrome.storage.local.clear(() => {
-            option1.checked = false;
-            option2.checked = false;
-            alert('Options reset!');
-        });
-    });
-});
+        this.adblock.init();
+    },
+    adblock: {
+        init: function() {
+            
+            chrome.storage.local.get(['isAdblock'], (result) => {
+				const isAdblock = result.isAdblock ;
+                if (isAdblock === undefined) {
+					chrome.storage.local.set({ isAdblock: false });
+				}
+                if (isAdblock === true) {
+                    checkBoxAdBlock.checked = true;
+                }
+            });
+            this.evt();
+        },
+        evt: function() {
+            checkBoxAdBlock.addEventListener('change', () => {
+                const isChecked = checkBoxAdBlock.checked;
+                chrome.storage.local.set({ isAdblock: isChecked }, ()=> console.log(`AdBlock 설정이 ${isChecked ? '활성화' : '비활성화'}되었습니다.`) );
+            });
+        }
+    }
+    
+}
 
-
- */
+optionUI.init();

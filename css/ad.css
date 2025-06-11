@@ -1,0 +1,9 @@
+@charset "utf-8";
+body{display: block;}
+#iBan,
+#ad1,
+#btm_ban,
+#section2 div[style="margin-bottom: 5px;"],
+#slrcf>.cl_spc,
+#main-ad,
+tr.blban{display: none !important;}
