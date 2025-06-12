@@ -1,36 +1,38 @@
 @charset "utf-8";
-/* body{display: block;}
-.slrbbs{display: flex;gap: 10px;max-width: 1000px;width: inherit;margin: auto;padding: 0px 15px;}
-.slrbbs #section1{flex: none;float: none;}
-.slrbbs #section2{width: calc(100% - 160px); margin-left: 0px;float: none; flex: 1;position: relative;}
-.userct, #userct{ margin-left: 0;}
-#userct img,
-.userct img{margin-left: 0; margin-bottom: 20px; margin-top: 20px;}
-.div_line_end{display: none;clear: none;position: fixed;left: -9999px;}
 
-#gnb li{position: relative;margin: 1px;}
-#gnb li::before{width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;font-size: 14px;font-weight: 700;color: #ffffff;content: "";text-transform: capitalize;box-sizing: border-box;padding-bottom: 4px;display: none;}
-#gnb li.community{ margin: 0 1px 0 5px;}
-#gnb li.community::before{content:"community";}
-#gnb li.community .sub{ width: 250px; }
-#gnb li.forum{}
-#gnb li.forum::before{content:"forum";}
-#gnb li.forum .sub{ width: 630px; }
-#gnb li.gallery{}
-#gnb li.gallery::before{content:"gallery";}
-#gnb li.gallery .sub{}
-#gnb li.information{}
-#gnb li.information::before{content:"information";}
-#gnb li.information .sub{ width: 260px; }
-#gnb li.market{}
-#gnb li.market::before{content:"market";}
-#gnb li.market .sub{ width: 250px; }
-#gnb li.slrmall{}
-#gnb li.slrmall::before{content:"slrmall";}
-#gnb li.slrmall .sub{}
-#gnb li.event{}
-#gnb li.event::before{content:"event";}
-#gnb li.event .sub{}
+html #userct,
+html .userct{border-color: #e8e8e8;}
 
-#gnb .sub{top: 38px;}
- */
+html #slrct .notice{border: #e8e8e8 solid 1px; }
+html #bbs_view_head {border: #e8e8e8 solid 1px;}
+
+html #rewview_list .list li{border: 1px solid #e8e8e8;}
+
+html .paging a:not(.bh),
+html .paging #actpg{border: #c1c1c1 solid 1px; }
+
+html #cmtinput_ct{ border: 1px solid #e8e8e8;}
+html #next_prev_art{border: #e8e8e8 solid 1px;}
+html #next_prev_art dl{border-bottom-color: #e8e8e8;}
+
+
+html .isGal #post_comment .rewrite_box{width: calc(100% - 120px);}
+html .isGal .reply .rewrite_box{width: calc(100% - 146px);}
+html .isGal #rewview_list .reply .re_prtnm::before{color: #8d8d8d;}
+html .isGal #rewview_list .list li{border-color: #3a3a3a}
+html .isGal .rewrite_box{width: 835px;width: calc(100% - 123px);}
+html .isGal #bbs_view_head {border-color: #3a3a3a}
+html .isGal .paging a:not(.bh),
+html .isGal .paging #actpg{border-color: #3a3a3a;}
+html .isGal #slrct .notice{border-color: #3a3a3a}
+html .isGal #cmtinput_ct {border: 1px solid #3a3a3a;}
+html .isGal #userct{border-color: #3a3a3a}
+html .isGal #next_prev_art{border-color: #3a3a3a}
+html .isGal #next_prev_art dl{border-bottom-color: #3a3a3a;}
+html .isGal #recent_post{border-color: #3a3a3a;}
+html .isGal #post_hd{border-color: #3a3a3a;}
+html .isGal #recent_post table tbody td.list_num .cate {    background: rgb(221 221 221 / 18%);}
+html .isGal #post_comment .rewrite_box, 
+html .isGal #cmtrep .rewrite_box{border: 1px solid #3a3a3a;}
+html .isGal #post_comment .rewrite_box textarea, 
+html .isGal #cmtrep .rewrite_box textarea{border-width: 0;}

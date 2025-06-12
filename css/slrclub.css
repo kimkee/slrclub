@@ -7,23 +7,25 @@ body[data-font="2"] *{ font-family: '맑은 고딕', sans-serif ; }
 body[data-font="3"],
 body[data-font="3"] *{ font-family: 'Noto Sans KR', sans-serif ;}
 body,
-body *{ font-family: '맑은 고딕', sans-serif ; }
+body *{ font-family: '맑은 고딕', sans-serif ; font-size:13px; line-height: 1.5; }
+
 #setBlockUser:hover{background-color: rgb(139, 165, 193); cursor: pointer;}
 #bbs_list .list_name .block_user,
 #bbs_view_head .nick .block_user,
 #rewview_list .cname+.block_user{color: #f14a00; font-size: 11px; line-height: 1;}
+#rewview_list .cname+.block_user{margin-left: 3px;}
 #bbs_view_head .nick .block_user{display: inline-block; margin-left: 4px;}
 #rewview_list .block_user.box{color: #f14a00; font-size: 11px; position: absolute; left:0px; right:0px; top:0px; bottom:0px; z-index: 1; background: #def3ff; padding: 25px;}
 /* #rewview_list li.isHide+li.reply{display: none;}
 #rewview_list li.isHide+li.reply+li.reply{display: none;} */
 
 #bbs_list tr td.list_name.isMemo{padding: 3px 0px; position: relative; line-height: 1.1;}
-#post_hd{ margin-bottom: 10px;border-bottom: #eeeeee solid 1px; padding: 0px 0px 6px 0px;}
+#post_hd{ margin-bottom: 10px;border-bottom: #e8e8e8 solid 1px; padding: 0px 0px 6px 0px;}
 #post_hd .link{display: flex; justify-content: space-between; width: 100%; }
 #post_hd .name{}
 #post_hd .more{}
 
-#recent_post{border: #dddddd solid 1px; margin: 15px 0px 20px 0px; padding: 10px 10px 10px 10px;}
+#recent_post{border: #e8e8e8 solid 1px; margin: 10px 0px 20px 0px; padding: 10px 10px 10px 10px;}
 #recent_post>table{width: 100%;table-layout: fixed;}
 #recent_post>table thead{}
 #recent_post>table thead.blist_head{display: none;}
@@ -45,7 +47,7 @@ body *{ font-family: '맑은 고딕', sans-serif ; }
 #recent_post>table tbody td.list_click{display: none;}
 #recent_post>table tbody tr:nth-child(5)~tr{display: none;}
 
-#post_comment .rewrite_box { width: calc(100% - 220px);}
+#post_comment .rewrite_box { width: calc(100% - 226px);}
 #post_comment .rewrite_box textarea, 
 #cmtrep .rewrite_box textarea{resize: vertical; min-height: 73px; height: 73px; max-height: 600px; outline: none; border-radius: 3px; line-height: 1.2;}
 #post_comment .rewrite_box, 
@@ -53,10 +55,94 @@ body *{ font-family: '맑은 고딕', sans-serif ; }
 #post_comment .rewrite_box:focus-within, 
 #cmtrep .rewrite_box:focus-within{border-color: #999999;}
 
-.isGal #recent_post{border-color: #555555;}
-.isGal #post_hd{border-color: #555555;}
-.isGal #recent_post table tbody td.list_num .cate {    background: rgb(221 221 221 / 18%);}
-.isGal #post_comment .rewrite_box, 
-.isGal #cmtrep .rewrite_box{border: 1px solid #565656;}
-.isGal #post_comment .rewrite_box textarea, 
-.isGal #cmtrep .rewrite_box textarea{border-width: 0;}
+
+/*  */
+html .slrbbs #section1 .menu{border: #e8e8e8 solid 1px;}
+html #userct,
+html .userct{border: transparent solid 1px;margin: 12px 0px 0px 0px;padding: 20px;}
+html #userct img,
+html .userct img {  margin-left: 0px; }
+
+html #gnbBtmWrap #login_area{display: flex; align-items: center;}
+html #gnbBtmWrap #login_area span{line-height: 1;}
+html #gnbBtmWrap #login_area span a{line-height: 1;}
+html #gnbBtmWrap #login_area span.xmemo img{padding-top: 0;}
+html #bbs_search ul#searchBox>*, #bbs_search2 ul#searchBox2>*{width: auto;}
+html .paging *{ vertical-align: middle; }
+html #bbs_foot .paging  tr td.list_num{padding-bottom: 5px;line-height: 1;}
+html #section1 li { padding: 5px 0 5px 10px; }
+html #section1 li.highlight {background: #2f85da;margin: 0px -1px; width: 94%;}
+html #section1 li:last-child{border-bottom-width: 0px;}
+
+html #bbs_list{border: #e8e8e8 solid 1px;border-collapse: separate;}
+html #bbs_list thead th{padding: 7px 0px;border-bottom: #e8e8e8 solid 1px;}
+html #bbs_list tr td{border-bottom: #e8e8e8 solid 1px;}
+html #bbs_list .tit_num,
+html #bbs_list .list_num{width: 70px;}
+html #bbs_list .sbj{padding: 8px 5px 8px 8px;}
+html #bbs_list tr:last-child td{border-bottom-width: 0px;}
+
+
+html #slrch p{padding: 12px 12px 12px 12px;margin-top: 10px;}
+html #slrch .hotbtn { top: 10px; right: 10px; }
+html #submenu_ct li{height: 18px;}
+html #submenu_ct li.target{height: 19px;}
+html #submenu_ct{background-position-y: 5px;}
+
+html #bbs_foot{margin-top: 20px;}
+html #slrct .notice{border: transparent solid 1px; padding: 6px 12px 6px 12px;margin: -1px 0px 12px 0px;}
+html #bbs_view_head {border: transparent solid 1px; border-collapse: separate;}
+html #bbs_view_head th { width: 70px; font-size:12px;}
+html #bbs_view_head tr:last-child th,
+html #bbs_view_head tr:last-child td{border-bottom-width: 0px;}
+html #bbs_view_head .date { width: 150px; }
+html #su ul{width: 130px;}
+
+
+html #cmt_spinner,
+html #cmtw_spinner{margin: auto;}
+html #rewview_list .list li{border: 1px solid transparent;margin-top: 12px;position: relative;padding: 16px 20px;}
+html #rewview_list .list li.reply{margin-left: 30px;padding-left: 20px;margin-top: 5px;overflow: visible;}
+html #rewview_list .list li.reply::before{content:"";width: 12px;height: 12px;position: absolute;left: -22px;top: 6px;background: url("https://media.slrclub.com/main/2012/bbs/icon_cmt_re.gif") no-repeat;}
+html #rewview_list .list li.reply::after{content:"";clear: both;display: table;}
+html #rewview_list .reply .re_prtnm{}
+html #rewview_list .reply .re_prtnm::before{content: "@";font-size: 12px;color: #4f4f4f;}
+
+html .cmt-btngrp span{font-size:12px; display: flex; gap: 5px;}
+html .cmt-btngrp{display: flex; gap: 5px;}
+html #cmtinput_ct {}
+html .cmt-contents{margin-left: 0px;}
+html .cmt-contents .cmtbt_ct{margin-left: 10px;}
+html #rewview_list .reply .cmt-contents{margin-left: 0px;}
+html #rewview_list .cmt-btns.tit_reply{font-size:12px; line-height: 1;}
+html #rewview_list .reply .info-wrap{background: none;padding: 0px;height: auto;}
+html .rewrite_box{width: calc(100% - 226px);}
+html .reply .rewrite_box{width: calc(100% - 242px);}
+html #cmtrep .rewrite_box textarea{width: 100%;}
+html .rewrite_box textarea{width: 100%;}
+
+html .paging a:not(.bh),
+html .paging #actpg{border: transparent solid 1px; display: inline-block;font-size: 13px;padding: 1px 4px;line-height: 1;margin: 0px 2px;min-height: 19px;min-width: 20px;box-sizing: border-box;vertical-align: middle;}
+html .paging img[alt="|"]{display: none;}
+
+
+html .bbs_bottom_btns{margin-top: 20px;}
+html .rewview_title{padding: 4px;}
+html #container-wrap .rewview_title_wrap{height: auto;}
+html #container-wrap .rewview_title_wrap #ip_addr{ top: 6px;}
+
+html #gal_list .title{height: 44px;}
+html #gal_ctgry th,
+html #gal_ctgry td{padding: 5px 0;}
+html #gal_ctgry td span{font-family: serif;}
+
+html #read_notice{ width: 18px; height: 18px; margin-left: 10px; margin-top: -3px;}
+
+html #cmtinput_ct{margin-top: 20px; border: 1px solid transparent;}
+html #next_prev_art{margin-top: 20px;border: transparent solid 1px;border-width: 1px 1px 0px 1px;}
+html #next_prev_art dl{height: auto;border-bottom-color: transparent;}
+html #next_prev_art dl dt{font-size:12px}
+html #next_prev_art dl::after{content:""; clear: both; display: table;}
+html #next_prev_art dl:last-child{border-bottom-width: 0;}
+
+html #slrch #explain p{ padding: 0px; }
