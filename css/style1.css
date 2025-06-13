@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+
+
 html #userct,
 html .userct{border-color: #e8e8e8;}
 
@@ -14,12 +16,13 @@ html .paging #actpg{border: #c1c1c1 solid 1px; }
 html #cmtinput_ct{ border: 1px solid #e8e8e8;}
 html #next_prev_art{border: #e8e8e8 solid 1px;}
 html #next_prev_art dl{border-bottom-color: #e8e8e8;}
-
+html #rewview_list .cname{border-color: #d4d4d4;}
 
 html .isGal #post_comment .rewrite_box{width: calc(100% - 120px);}
 html .isGal .reply .rewrite_box{width: calc(100% - 146px);}
 html .isGal #rewview_list .reply .re_prtnm::before{color: #8d8d8d;}
 html .isGal #rewview_list .list li{border-color: #3a3a3a}
+html .isGal #rewview_list .cname{border-color: #3a3a3a}
 html .isGal .rewrite_box{width: 835px;width: calc(100% - 123px);}
 html .isGal #bbs_view_head {border-color: #3a3a3a}
 html .isGal .paging a:not(.bh),
@@ -36,3 +39,4 @@ html .isGal #post_comment .rewrite_box,
 html .isGal #cmtrep .rewrite_box{border: 1px solid #3a3a3a;}
 html .isGal #post_comment .rewrite_box textarea, 
 html .isGal #cmtrep .rewrite_box textarea{border-width: 0;}
+html .isGal #rewview_list .block_user.box{background: #222222;}

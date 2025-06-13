@@ -9,11 +9,48 @@ body[data-font="3"] *{ font-family: 'Noto Sans KR', sans-serif ;}
 body,
 body *{ font-family: '맑은 고딕', sans-serif ; font-size:13px; line-height: 1.5; }
 
+html #logo{ height: 60px; padding: 0px 0px 0px 23px; margin-top: -4px;}
+html #logo img{ height: 100%; width: auto; }
+html #searchWrap{ padding: 7px 0 0 20px; }
+html #header #main-ad{height: 50px;z-index: -1; position: relative; overflow: hidden;}
+html #top_popkwd{top: 54px; left: 20px;}
+
+html #gnb li{position: relative; }
+html #gnb li::before{width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;font-size: 14px;font-weight: 700;color: #ffffff;content: "";text-transform: capitalize;box-sizing: border-box;padding-bottom: 4px;display: none;}
+html #gnb li.community{ margin: 0 1px 0 5px;}
+html #gnb li.community::before{content:"community";}
+html #gnb li.community .sub{ width: 250px; }
+html #gnb li.forum{}
+html #gnb li.forum::before{content:"forum";}
+html #gnb li.forum .sub{ width: 630px; }
+html #gnb li.gallery{}
+html #gnb li.gallery::before{content:"gallery";}
+html #gnb li.gallery .sub{}
+html #gnb li.information{}
+html #gnb li.information::before{content:"information";}
+html #gnb li.information .sub{ width: 260px; }
+html #gnb li.market{}
+html #gnb li.market::before{content:"market";}
+html #gnb li.market .sub{ width: 250px; }
+html #gnb li.slrmall{}
+html #gnb li.slrmall::before{content:"slrmall";}
+html #gnb li.slrmall .sub{}
+html #gnb li.event{}
+html #gnb li.event::before{content:"event";}
+html #gnb li.event .sub{}
+html #gnb .sub{top: 38px;}
+
+
+
+
+
 #setBlockUser:hover{background-color: rgb(139, 165, 193); cursor: pointer;}
 #bbs_list .list_name .block_user,
 #bbs_view_head .nick .block_user,
 #rewview_list .cname+.block_user{color: #f14a00; font-size: 11px; line-height: 1;}
-#rewview_list .cname+.block_user{margin-left: 3px;}
+#rewview_list .cname{border: transparent solid 1px; border-radius: 4px; padding: 2px 5px;margin-left: -7px;}
+#rewview_list .cname:empty{display: none;}
+#rewview_list .cname+.block_user{margin-left: 3px; }
 #bbs_view_head .nick .block_user{display: inline-block; margin-left: 4px;}
 #rewview_list .block_user.box{color: #f14a00; font-size: 11px; position: absolute; left:0px; right:0px; top:0px; bottom:0px; z-index: 1; background: #def3ff; padding: 25px;}
 /* #rewview_list li.isHide+li.reply{display: none;}
@@ -115,7 +152,8 @@ html .cmt-contents{margin-left: 0px;}
 html .cmt-contents .cmtbt_ct{margin-left: 10px;}
 html #rewview_list .reply .cmt-contents{margin-left: 0px;}
 html #rewview_list .cmt-btns.tit_reply{font-size:12px; line-height: 1;}
-html #rewview_list .reply .info-wrap{background: none;padding: 0px;height: auto;}
+html #rewview_list .info-wrap{position: relative;}
+html #rewview_list .reply .info-wrap{background: none;padding: 0px;height: auto; position: relative;}
 html .rewrite_box{width: calc(100% - 226px);}
 html .reply .rewrite_box{width: calc(100% - 242px);}
 html #cmtrep .rewrite_box textarea{width: 100%;}
@@ -146,3 +184,7 @@ html #next_prev_art dl::after{content:""; clear: both; display: table;}
 html #next_prev_art dl:last-child{border-bottom-width: 0;}
 
 html #slrch #explain p{ padding: 0px; }
+
+
+
+#section2 div[style="margin-bottom: 5px;"]{display: none !important;}
