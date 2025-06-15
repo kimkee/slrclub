@@ -99,11 +99,15 @@ html #userct,
 html .userct{border: transparent solid 1px;margin: 12px 0px 0px 0px;padding: 20px;}
 html #userct img,
 html .userct img {  margin-left: 0px; }
+html #slrct #userct{ margin-bottom: 0px !important;}
+
+html #userct .art_movie{ max-width: 100%;}
+html #userct .art_movie iframe{ max-width: 100%;}
 
 html #gnbBtmWrap #login_area{display: flex; align-items: center;}
 html #gnbBtmWrap #login_area span{line-height: 1;}
 html #gnbBtmWrap #login_area span a{line-height: 1;}
-html #gnbBtmWrap #login_area span.xmemo img{padding-top: 0;}
+html #gnbBtmWrap #login_area span.xmemo img{padding-top: 0; margin-top: -3px;}
 html #bbs_search ul#searchBox>*, #bbs_search2 ul#searchBox2>*{width: auto;}
 html .paging *{ vertical-align: middle; }
 html #bbs_foot .paging  tr td.list_num{padding-bottom: 5px;line-height: 1;}
@@ -187,4 +191,5 @@ html #slrch #explain p{ padding: 0px; }
 
 
 
-#section2 div[style="margin-bottom: 5px;"]{display: none !important;}
+#section2 div[style="margin-bottom: 5px;"],
+#slrct div[style="margin-bottom:5px"] {display: none !important;}
