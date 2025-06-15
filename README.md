@@ -1,8 +1,9 @@
 # Slrclub
 
-
 SLRCLUB 커뮤니티에서 유용한 기능을 제공하는 확장 프로그램입니다.
 
+## Version 2.2.2
+- 디자인개선
 ## Version 2.1.0
 - 폰트변경 기능 추가 
 ## Version 2.0.0
