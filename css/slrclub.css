@@ -155,7 +155,8 @@ html #cmtinput_ct {}
 html .cmt-contents{margin-left: 0px;}
 html .cmt-contents .cmtbt_ct{margin-left: 10px;}
 html #rewview_list .reply .cmt-contents{margin-left: 0px;}
-html #rewview_list .cmt-btns.tit_reply{font-size:12px; line-height: 1;}
+html #rewview_list .cmt-btns.tit_reply{font-size:12px; line-height: 1; bottom: 0px; position: relative; z-index: 10;}
+html #rewview_list .re_wrtnm{margin-top: 10px;}
 html #rewview_list .info-wrap{position: relative;}
 html #rewview_list .reply .info-wrap{background: none;padding: 0px;height: auto; position: relative;}
 html .rewrite_box{width: calc(100% - 226px);}
@@ -193,3 +194,7 @@ html #slrch #explain p{ padding: 0px; }
 
 #section2 div[style="margin-bottom: 5px;"],
 #slrct div[style="margin-bottom:5px"] {display: none !important;}
+
+html #bbs_list .reply_icon img{    vertical-align: top; padding-top: 3px;}
+
+html #category{margin-top: -4px;}

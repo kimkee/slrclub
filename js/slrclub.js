@@ -386,6 +386,11 @@ const slrclubUI = {
             const cssurl = chrome.runtime.getURL("css/style1.css");
             const styleCss = `<link rel="stylesheet" type="text/css" href="${cssurl}">`;
             document.head.insertAdjacentHTML('beforeend', styleCss);
+
+            // 자게 인기글 링크
+            if(slrclubUI.param['id'] == 'free'){
+                document.querySelector('a.bh.btn_hotart')?.setAttribute('href', '/bbs/zboard.php?id=hot_article&category=1&setsearch=category');
+            }
         }
     },
     adblock: {
