@@ -169,7 +169,7 @@ const slrclubUI = {
                             if ( (name === uname || key === xuid ) && cutoff  && !els.closest('#bbs_view_head') ) {
                                 els.closest('tr').style.opacity = '0.5';
                                 els.closest('tr').style.display = 'none';
-                                
+
                             }
                         });
                         document.querySelectorAll('#rewview_list .cname').forEach(els => {
@@ -190,6 +190,19 @@ const slrclubUI = {
                                     els.closest('li').classList.add("isHide");
                                     // els.closest('li').querySelector('.cmtbt_ct').style.display = 'none';
                                 }
+                            }
+                        });
+
+                        document.querySelectorAll('#art-part .list li .name[data-uid]').forEach(els => {
+                            const xuid = els.getAttribute('data-xuid');
+                            const uname = els.innerText;
+                            console.log( key , cutoff ,  xuid);
+                            if ( name === uname || key === xuid ) {
+                                els.insertAdjacentHTML('afterend', `<span class="block_user">[${memo}]</span>`);
+                            }
+                            if ( (name === uname || key === xuid ) && cutoff  && !els.closest('#bbs_view_head') ) {
+                                els.closest('li').style.opacity = '0.5';
+                                els.closest('li').style.display = 'none';
                             }
                         });
                         

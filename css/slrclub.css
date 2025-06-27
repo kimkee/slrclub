@@ -45,6 +45,7 @@ html #gnb .sub{top: 38px;}
 
 
 #setBlockUser:hover{background-color: rgb(139, 165, 193); cursor: pointer;}
+#art-part .list li .name[data-uid]+.block_user,
 #bbs_list .list_name .block_user,
 #bbs_view_head .nick .block_user,
 #rewview_list .cname+.block_user{color: #f14a00; font-size: 11px; line-height: 1;}
@@ -53,6 +54,9 @@ html #gnb .sub{top: 38px;}
 #rewview_list .cname+.block_user{margin-left: 3px; }
 #bbs_view_head .nick .block_user{display: inline-block; margin-left: 4px;}
 #rewview_list .block_user.box{color: #f14a00; font-size: 11px; position: absolute; left:0px; right:0px; top:0px; bottom:0px; z-index: 1; background: #def3ff; padding: 25px;}
+#art-part .list li .name{position: relative;}
+#art-part .list li .name[data-uid]+.block_user{color: #f14a00;font-size: 11px;position: absolute;right:0px;z-index: 1;background: #ffffff; border: #ddd solid 1px; padding: 1px 1px; top: 2px;}
+#art-part .list li .name[data-uid]+.block_user:hover{opacity: 0;}
 /* #rewview_list li.isHide+li.reply{display: none;}
 #rewview_list li.isHide+li.reply+li.reply{display: none;} */
 
@@ -111,9 +115,9 @@ html #gnbBtmWrap #login_area span.xmemo img{padding-top: 0; margin-top: -3px;}
 html #bbs_search ul#searchBox>*, #bbs_search2 ul#searchBox2>*{width: auto;}
 html .paging *{ vertical-align: middle; }
 html #bbs_foot .paging  tr td.list_num{padding-bottom: 5px;line-height: 1;}
-html #section1 li { padding: 5px 0 5px 10px; }
-html #section1 li.highlight {background: #2f85da;margin: 0px -1px; width: 94%;}
-html #section1 li:last-child{border-bottom-width: 0px;}
+html #section1 .menu>li { padding: 5px 0 5px 10px; }
+html #section1 .menu>li.highlight {background: #2f85da;margin: 0px -1px; width: 94%;}
+html #section1 .menu>li:last-child{border-bottom-width: 0px;}
 
 html #bbs_list{border: #e8e8e8 solid 1px;border-collapse: separate;}
 html #bbs_list thead th{padding: 7px 0px;border-bottom: #e8e8e8 solid 1px;}
