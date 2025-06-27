@@ -56,7 +56,7 @@ html #gnb .sub{top: 38px;}
 #rewview_list .block_user.box{color: #f14a00; font-size: 11px; position: absolute; left:0px; right:0px; top:0px; bottom:0px; z-index: 1; background: #def3ff; padding: 25px;}
 #art-part .list li .name{position: relative;}
 #art-part .list li .name[data-uid]+.block_user{color: #f14a00;font-size: 11px;position: absolute;right:0px;z-index: 1;background: #ffffff; border: #ddd solid 1px; padding: 1px 1px; top: 2px;}
-#art-part .list li .name[data-uid]+.block_user:hover{opacity: 0;}
+#art-part .list li:hover .name[data-uid]+.block_user{opacity: 0; display: none;}
 /* #rewview_list li.isHide+li.reply{display: none;}
 #rewview_list li.isHide+li.reply+li.reply{display: none;} */
 
