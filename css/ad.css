@@ -9,4 +9,6 @@ body{display: block;}
 #slrct div[style="margin-bottom:5px"],
 #slrcf>.cl_spc,
 #main-ad,
+#r_skyban,
+#slrct>div:first-child,
 tr.blban{display: none !important;}

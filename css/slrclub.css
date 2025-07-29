@@ -200,7 +200,9 @@ html #slrch #explain p{ padding: 0px; }
 
 #section2 div[style="margin-bottom: 5px;"],
 #l_skyban,
-#slrct div[style="margin-bottom:5px"] {display: none !important;}
+#r_skyban,
+#slrct>div:first-child,
+#slrct div[style="margi`n-bottom:5px"] {display: none !important;}
 
 html #bbs_list .reply_icon img{    vertical-align: top; padding-top: 3px;}
 
