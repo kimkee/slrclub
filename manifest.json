@@ -3,6 +3,7 @@
     "name": "SLRCLUB+",
     "description":"SLRCLUB 커뮤니티 확장기능",
     "version": "2.3.3",
+    "default_locale": "ko",
     "content_scripts": [
         {
             "matches": [
