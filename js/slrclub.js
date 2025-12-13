@@ -10,6 +10,7 @@ const slrclubUI = {
         this.font.init();
         this.css.init();
         this.adblock.init();
+        this.darkmode.init();
     },
     blocking: {
         init: function() {
@@ -295,6 +296,31 @@ const slrclubUI = {
             // if(el.scrollHeight <= 73) return; 
             el.style.height = '73px'; // 초기화
             el.style.height = el.scrollHeight - 0  + 'px'; // 높이 조정
+        }
+    },
+    darkmode: {
+        init: function() {
+            
+            chrome.storage.local.get(['isCheckDarkMode'], (result) => {
+				const isCheckDarkMode = result.isCheckDarkMode ;
+                if (isCheckDarkMode === undefined) {
+					chrome.storage.local.set({ isCheckDarkMode: false });
+                    localStorage.setItem('isCheckDarkMode', false);
+				}
+                if (isCheckDarkMode === true) {
+                    slrclubUI.darkmode.set();      
+                    localStorage.setItem('isCheckDarkMode', true);
+                    document.documentElement.classList.add("dark");
+                }else{
+                    document.documentElement.classList.remove("dark");
+                }
+            });
+
+        },
+        set: function() {
+            const cssurl = chrome.runtime.getURL("css/darkmode.css");
+            const styleCss = `<link rel="stylesheet" type="text/css" href="${cssurl}">`;
+            document.head.insertAdjacentHTML('beforeend', styleCss);
         }
     },
     roulette: {

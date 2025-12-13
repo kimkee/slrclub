@@ -1,0 +1,93 @@
+@charset "utf-8";
+html{
+    --background-color: #222222;
+    --text-color: #efefef;
+    --link-color: #cccccc;
+    --text-blue-color: #96baff;
+    --text-visited-color: #cfa5e1;
+    --border-color: #555555;
+}
+html    body{background-color: var(--background-color); color: var(--text-color)}
+html    body a{color: var(--link-color);}
+html    #bbs_list .sbj a{color: var(--link-color);}
+html    #bbs_list .sbj a:hover{color: #a2c1df;}
+html    #bbs_list .sbj a:visited{ color: var(--text-visited-color);}
+html    #section1 li a{color: var(--link-color);}
+html    #section1 li{border-color: var(--border-color);}
+html    #section1 li.division{border-color: var(--border-color);}
+html    .slrbbs #section1 .menu{border-color: var(--border-color);}
+html    #bbs_list {border-color: var(--border-color);}
+html    #bbs_list thead th{border-color: var(--border-color);}
+html    #bbs_list tr {background-color: var(--background-color) !important;}
+html    #bbs_list tr td {border-color: var(--border-color);}
+html    #bbs_list .list_name{color: var(--link-color);}
+html    .bbs_bg_box{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color); background-image: none;}
+html    #submenu_ct{background-color: var(--background-color); background-image: none; }
+html    #submenu_ct li{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+html    #submenu_ct li.target{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+html    #submenu_ct li.target a{ color: var(--text-color);}
+html    #gnbBtmWrap{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+html #userct,
+html .userct{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+html #bbs_view_head{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+html #slrct .notice{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+#bbs_view_head .first_part{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+#bbs_view_head .sbj{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+#bbs_view_head th{border-color: var(--border-color);}
+#bbs_list .list_ctgry{color: var(--text-color);}
+#recent_post {border-color: var(--border-color);}
+#post_hd {border-color: var(--border-color);}
+#container-wrap .rewview_title_wrap{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+html #rewview_list .list li{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+.cmt-contents{color: var(--text-color);}
+html #rewview_list .cname{color: var(--text-color); border-color: var(--border-color);}
+html #cmtinput_ct{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+html #next_prev_art{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+html #next_prev_art dl{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+#next_prev_art dd a{color: var(--link-color);}
+.wrtnm{color: var(--text-color);}
+.bbs_write_head{border-color: var(--border-color);}
+#gnbBtmWrap #login_area span a{color: var(--text-color);}
+#opt_ct{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+#bbs_write_content{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+.bbs_write_campaign{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+.rewrite_box{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+html input,
+html textarea{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+html input:focus-visible,
+html textarea:focus-visible{outline-color: #bbbbbb !important; outline-style: solid; border-color: #696969;}
+#bbs_write_content textarea{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+.txt_st{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+.file_upload .upload_list{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+.file_upload{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+#bbs_view_head .nick{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+.cmtwbtn input[type='image']{filter: invert(0.8); border-radius: 5px;}
+.cmtwbtn2 input[type='image']{filter: invert(0.8);}
+.bbs_bottom_btns .btn2 input[type='image']{filter: invert(0.9);}
+html .bbs_bottom_btns a .bt_wrt{filter: invert(0.8);}
+html .bbs_bottom_btns a img{filter: invert(0.8);}
+#comment_pgc img{filter: invert(0.8);}
+html #slrch .hotbtn a{filter: invert(0.8);}
+#bbs_foot td a{filter: invert(0.8);}
+#bbs_foot .paging a{filter: invert(0); }
+.comment_pgc input, #comment_pgc input{color: var(--text-color)}
+#bbs_foot .pageN .prev10,
+#bbs_foot .pageN .prev1,
+#bbs_foot .pageN .next1,
+#bbs_foot .pageN .next10{ filter: invert(0.8);}
+.file_upload .file_command{ filter: invert(0.8);}
+#recent_post > table tbody td.list_num .cate{color: #c3c3c3; background-color: #414141;}
+html #su ul{border-color: var(--border-color); background-color: var(--background-color); color: var(--text-color);}
+html #su ul li{ background-color: var(--background-color) !important;}
+html #su ul li:hover{ background-color: #444444 !important;}
+html #su ul a{}
+
+.note1{color: var(--text-blue-color)}
+#section1 li.slrqna a{color: var(--text-blue-color)}
+#recent_post > table tbody td.sbj a:visited {color: var(--text-visited-color)}
+html .paging a:not(.bh),
+html .paging #actpg{color: var(--link-color); border-color: var(--border-color);}
+#bbs_search .input_kwd, 
+#bbs_search2 .input_kwd{ background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+#mypage{background-color: var(--background-color); color: var(--text-color); border-color: var(--border-color);}
+.list_underline {background-color: var(--border-color);}

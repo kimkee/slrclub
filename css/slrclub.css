@@ -8,7 +8,8 @@ body[data-font="3"],
 body[data-font="3"] *{ font-family: 'Noto Sans KR', sans-serif ;}
 body,
 body *{ font-family: '맑은 고딕', sans-serif ; font-size:13px; line-height: 1.5; }
-
+body{}
+body.dark{background: #121212;}
 html #logo{ height: 60px; padding: 0px 0px 0px 23px; margin-top: -4px;}
 html #logo img{ height: 100%; width: auto; }
 html #searchWrap{ padding: 7px 0 0 20px; }
@@ -207,3 +208,19 @@ html #slrch #explain p{ padding: 0px; }
 html #bbs_list .reply_icon img{    vertical-align: top; padding-top: 3px;}
 
 html #category{margin-top: -4px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
