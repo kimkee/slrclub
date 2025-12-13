@@ -11,4 +11,5 @@ body{display: block;}
 #main-ad,
 #r_skyban,
 #slrct>div:first-child,
+html #rewview_list .list li[style="padding: 0px;"],
 tr.blban{display: none !important;}
