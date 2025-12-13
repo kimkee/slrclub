@@ -1,5 +1,5 @@
 
-chrome.storage.local.get(['theme','blockingData','blockingEnabled','isAutoRoulette', 'isCheckDarkMode'], (result) => {
+chrome.storage.local.get(['theme','blockingData','blockingEnabled','isAutoRoulette'], (result) => {
     console.log('테마 : ', result.theme);
     blockingData = result.blockingData || [];
 
@@ -14,10 +14,6 @@ chrome.storage.local.get(['theme','blockingData','blockingEnabled','isAutoRoulet
     const isAutoRoulette = result.isAutoRoulette === undefined ? false : result.isAutoRoulette;
     document.getElementById('autoRoulette').checked = isAutoRoulette;
     setIsAutoRoulette(isAutoRoulette);
-
-    const isCheckDarkMode = result.isCheckDarkMode === undefined ? false : result.isCheckDarkMode;
-    document.getElementById('checkDarkMode').checked = isCheckDarkMode;
-    setIsCheckDarkMode(isCheckDarkMode);
 });
 
 const setIsAutoRoulette = (isAutoRoulette) => {
@@ -25,14 +21,6 @@ const setIsAutoRoulette = (isAutoRoulette) => {
         document.getElementById('autoRoulette').checked = true;
     }else{
         document.getElementById('autoRoulette').checked = false;
-    }
-}
-
-const setIsCheckDarkMode = (isCheckDarkMode) => {
-    if(isCheckDarkMode){
-        document.getElementById('checkDarkMode').checked = true;
-    }else{
-        document.getElementById('checkDarkMode').checked = false;
     }
 }
 
@@ -183,18 +171,6 @@ document.getElementById('autoRoulette').addEventListener('change', () => {
     });
 });
 
-document.getElementById('checkDarkMode').addEventListener('change', () => {
-    const isChecked = document.getElementById('checkDarkMode').checked;
-    const dataToSave = {
-        isCheckDarkMode: isChecked
-    };
-    // chrome.storage.sync에 데이터 저장
-    chrome.storage.local.set(dataToSave, () => {
-        console.log('다크모드', dataToSave);
-        setIsCheckDarkMode(isChecked);
-    });
-
-});
 
 document.getElementById('btnBackup').addEventListener('click', () => {
     chrome.storage.local.get(null, (items)=> {
