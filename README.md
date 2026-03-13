@@ -111,8 +111,8 @@ slrclub/
 ### 환경 설정
 ```bash
 # 1. 프로젝트를 클론합니다.
-git clone https://github.com/your-username/slrclub-plus.git
-cd slrclub-plus
+git clone https://github.com/kimkee/slrclub.git
+cd slrclub
 
 # 2. 의존성을 설치합니다.
 npm install
